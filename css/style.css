@@ -67,3 +67,49 @@ button:hover {
   color: #777;
   font-size: 0.9rem;
 }
+
+/* --- Dashboard Specific --- */
+.logout-section {
+  margin-top: auto;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.lesson-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lesson-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-card h3 {
+  color: var(--primary);
+  margin-top: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.lesson-card p {
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.lesson-card .primary {
+  margin-top: 1rem;
+  align-self: flex-start;
+}

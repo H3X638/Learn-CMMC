@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CMMC Learning Portal – Login</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script type="module" src="js/auth.js" defer></script>
 </head>
 
 <body>
@@ -15,78 +16,9 @@
       <input type="password" id="password" placeholder="Password" />
       <button id="loginBtn">Sign In</button>
       <button id="signupBtn" class="secondary">Create Account</button>
-
       <div class="divider">or</div>
       <button id="googleLoginBtn" class="google">Sign in with Google</button>
     </div>
   </div>
-
- <script type="module">
-    // Import Firebase SDKs
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-    import {
-      getAuth,
-      signInWithEmailAndPassword,
-      createUserWithEmailAndPassword,
-      GoogleAuthProvider,
-      signInWithPopup
-    } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-
-    // Your Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyBymixunzlYK8rpMQlYzezZeUsYckn2qjg",
-      authDomain: "cmmc-39068.firebaseapp.com",
-      projectId: "cmmc-39068",
-      storageBucket: "cmmc-39068.firebasestorage.app",
-      messagingSenderId: "463614445459",
-      appId: "1:463614445459:web:1f56faebeafd5cce6a0a66"
-    };
-
-     // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    console.log("Firebase initialized:", app.name);
-
-    // Email Login
-    document.getElementById("loginBtn").addEventListener("click", async () => {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      try {
-        await signInWithEmailAndPassword(auth, email, password);
-        alert("Login successful!");
-        window.location.href = "dashboard.html";
-      } catch (error) {
-        console.error(error);
-        alert(error.message);
-      }
-    });
-
-    // Create Account
-    document.getElementById("signupBtn").addEventListener("click", async () => {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        alert("Account created successfully!");
-        window.location.href = "dashboard.html";
-      } catch (error) {
-        console.error(error);
-        alert(error.message);
-      }
-    });
-
-    // Google Login
-    document.getElementById("googleLoginBtn").addEventListener("click", async () => {
-      const provider = new GoogleAuthProvider();
-      try {
-        await signInWithPopup(auth, provider);
-        alert("Google login successful!");
-        window.location.href = "dashboard.html";
-      } catch (error) {
-        console.error(error);
-        alert(error.message);
-      }
-    });
-  </script>
 </body>
 </html>
