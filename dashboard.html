@@ -6,54 +6,25 @@
   <title>CMMC Learning Portal – Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Poppins:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
-
-  <script type="module">
-    import { requireAuth, getUser, logout } from "./js/firebase.js";
-    requireAuth();
-    getUser((user) => {
-      if (user) document.getElementById("userEmail").textContent = user.email;
-    });
-    window.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("logoutBtn").addEventListener("click", logout);
-
-      // Sidebar navigation logic
-      const navItems = document.querySelectorAll(".sidebar-section ul li[data-view]");
-      const views = document.querySelectorAll(".view");
-
-      navItems.forEach(item => {
-        item.addEventListener("click", () => {
-          navItems.forEach(i => i.classList.remove("active"));
-          item.classList.add("active");
-          const viewToShow = item.getAttribute("data-view");
-          views.forEach(v => v.classList.toggle("hidden", v.id !== viewToShow));
-        });
-      });
-    });
-  </script>
 </head>
 
 <body>
   <div class="app-container">
-    <!-- Sidebar -->
     <aside class="sidebar">
       <h2 class="logo">CMMC Portal</h2>
-
-      <div class="sidebar-section">
-        <h3>Dashboard</h3>
+      <nav>
         <ul>
-          <li class="active" data-view="lessons">Lessons</li>
-          <li data-view="strengths">Strengths & Weaknesses</li>
+          <li class="active">Dashboard</li>
+          <li>Lessons</li>
+          <li>Strengths</li>
         </ul>
-      </div>
-
+      </nav>
       <div class="logout-section">
         <button id="logoutBtn" class="secondary">Logout</button>
       </div>
     </aside>
 
-    <!-- Main Content -->
     <main class="content">
-
       <!-- View: Lessons -->
       <section id="lessons" class="view">
         <header class="topbar">
@@ -68,25 +39,7 @@
         </header>
 
         <h2 class="section-title">Available Lessons</h2>
-        <div class="cards">
-          <div class="lesson-card">
-            <h3>Lesson 1: Understanding CMMC</h3>
-            <p>Learn the purpose, structure, and importance of CMMC within the Defense Industrial Base.</p>
-            <button class="primary">Start Lesson</button>
-          </div>
-
-          <div class="lesson-card">
-            <h3>Lesson 2: NIST SP 800-171 Overview</h3>
-            <p>Dive deep into the 14 families and 110 requirements that form the backbone of CMMC Level 2.</p>
-            <button class="primary">Continue</button>
-          </div>
-
-          <div class="lesson-card">
-            <h3>Lesson 3: Assessment Readiness</h3>
-            <p>Understand scoping, SSPs, POA&Ms, and evidence expectations in the CMMC assessment process.</p>
-            <button class="primary">Continue</button>
-          </div>
-        </div>
+        <div class="cards"></div> <!-- will be filled dynamically -->
       </section>
 
       <!-- View: Strengths -->
@@ -118,5 +71,38 @@
       </section>
     </main>
   </div>
+
+  <!-- ✅/Dynamic lessons + Firebase auth logic -->
+  <script type="module">
+    import { lessons } from "./js/lessons.js";
+    import { requireAuth, getUser, logout } from "./js/firebase.js";
+
+    // Ensure authenticated
+    requireAuth();
+
+    // Display user info
+    getUser((user) => {
+      if (user) document.getElementById("userEmail").textContent = user.email;
+    });
+
+    // Logout handler
+    document.getElementById("logoutBtn").addEventListener("click", logout);
+
+    // Render lessons dynamically
+    const cardsContainer = document.querySelector(".cards");
+
+    lessons.forEach((lesson) => {
+      const card = document.createElement("div");
+      card.classList.add("lesson-card");
+
+      card.innerHTML = `
+        <h3>Lesson ${lesson.id}: ${lesson.title}</h3>
+        <p>${lesson.focus}</p>
+        <button class="primary" onclick="window.location.href='lesson${lesson.id}.html'">Start Lesson</button>
+      `;
+
+      cardsContainer.appendChild(card);
+    });
+  </script>
 </body>
 </html>
