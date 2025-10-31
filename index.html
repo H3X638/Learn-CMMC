@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CMMC Learning Portal</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMMC Learning Portal – Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="module" src="js/auth.js" defer></script>
 </head>
 
 <body>
   <div class="container">
     <h1>CMMC Learning Portal</h1>
-    <input type="email" id="email" placeholder="Email" />
-    <input type="password" id="password" placeholder="Password" />
-    <button id="loginBtn">Sign In</button>
+    <div class="login-box">
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+      <button id="loginBtn">Sign In</button>
+      <button id="signupBtn" class="secondary">Create Account</button>
+
+      <div class="divider">or</div>
+      <button id="googleLoginBtn" class="google">Sign in with Google</button>
+    </div>
   </div>
 
   <script type="module">
