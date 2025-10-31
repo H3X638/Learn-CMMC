@@ -1,91 +1,149 @@
+:root {
+  --primary: #0c2d48;          /* Navy / Slate Blue */
+  --accent: #2cb1bc;           /* Teal (muted gold alt: #c2b280) */
+  --bg: #f6f8fa;               /* Off-white background */
+  --text: #1f1f1f;             /* Main text */
+  --text-light: #6b7280;       /* Secondary text */
+  --radius: 10px;
+}
+
 body {
-  font-family: "Inter", sans-serif;
-  background: #f6f8fa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  background: var(--bg);
+  color: var(--text);
   height: 100vh;
+  display: flex;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Poppins", sans-serif;
+  color: var(--primary);
   margin: 0;
 }
 
-.container {
-  text-align: center;
-  background: white;
-  padding: 3rem 4rem;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  width: 320px;
+.app-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
 }
 
-h1 {
-  color: #0c2d48;
+.sidebar {
+  width: 240px;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.sidebar .logo {
+  font-size: 1.5rem;
+  text-align: center;
   margin-bottom: 2rem;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar nav li {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidebar nav li:hover,
+.sidebar nav li.active {
+  background: var(--accent);
+  color: var(--primary);
   font-weight: 600;
 }
 
-input {
-  width: 100%;
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-button {
-  width: 100%;
-  padding: 0.75rem;
-  margin-top: 1rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-button#loginBtn {
-  background: #0c2d48;
-  color: white;
-}
-
-button.secondary {
-  background: #eee;
-  color: #333;
-}
-
-button.google {
-  background: #4285f4;
-  color: white;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-.divider {
-  margin: 1rem 0;
-  color: #777;
-  font-size: 0.9rem;
-}
-
-/* --- Dashboard Specific --- */
 .logout-section {
   margin-top: auto;
   text-align: center;
   padding-top: 2rem;
 }
 
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem;
+  box-sizing: border-box;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  color: var(--text-light);
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.progress-wrapper {
+  min-width: 240px;
+  text-align: right;
+}
+
+.progress-label {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.progress {
+  height: 100%;
+  background: var(--accent);
+  width: 45%;
+  transition: width 0.3s ease;
+}
+
+.lesson-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+/* ---------- Lesson Cards ---------- */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .lesson-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -94,22 +152,128 @@ button:hover {
 }
 
 .lesson-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 .lesson-card h3 {
   color: var(--primary);
-  margin-top: 0;
-  font-family: "Poppins", sans-serif;
+  margin-bottom: 0.5rem;
 }
 
 .lesson-card p {
   color: var(--text-light);
   line-height: 1.5;
+  flex: 1;
 }
 
-.lesson-card .primary {
+button {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+button.primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+button.primary:hover {
+  background: #133a5e;
+}
+
+button.secondary {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+button.secondary:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.container {
+  text-align: center;
+  background: #fff;
+  padding: 3rem 4rem;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  margin: auto;
+  align-self: center;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: 1rem;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 0.75rem;
   margin-top: 1rem;
-  align-self: flex-start;
+}
+
+button.google {
+  background: #4285f4;
+  color: white;
+}
+
+button.google:hover {
+  opacity: 0.9;
+}
+
+.divider {
+  margin: 1rem 0;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+
+@media (max-width: 900px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .sidebar nav ul {
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .content {
+    padding: 1.5rem;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-wrapper {
+    width: 100%;
+    text-align: left;
+    margin-top: 1rem;
+  }
 }
