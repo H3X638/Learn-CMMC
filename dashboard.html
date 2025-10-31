@@ -6,6 +6,7 @@
   <title>CMMC Learning Portal – Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Poppins:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
+
   <script type="module">
     import { requireAuth, getUser, logout } from "./js/firebase.js";
     requireAuth();
@@ -14,6 +15,19 @@
     });
     window.addEventListener("DOMContentLoaded", () => {
       document.getElementById("logoutBtn").addEventListener("click", logout);
+
+      // Sidebar navigation logic
+      const navItems = document.querySelectorAll(".sidebar-section ul li[data-view]");
+      const views = document.querySelectorAll(".view");
+
+      navItems.forEach(item => {
+        item.addEventListener("click", () => {
+          navItems.forEach(i => i.classList.remove("active"));
+          item.classList.add("active");
+          const viewToShow = item.getAttribute("data-view");
+          views.forEach(v => v.classList.toggle("hidden", v.id !== viewToShow));
+        });
+      });
     });
   </script>
 </head>
@@ -25,21 +39,10 @@
       <h2 class="logo">CMMC Portal</h2>
 
       <div class="sidebar-section">
-        <h3>Strengths & Weaknesses</h3>
+        <h3>Dashboard</h3>
         <ul>
-          <li><span class="dot beginner"></span> Beginner</li>
-          <li><span class="dot intermediate"></span> Intermediate</li>
-          <li><span class="dot proficient"></span> Proficient</li>
-        </ul>
-      </div>
-
-      <div class="sidebar-section">
-        <h3>Lessons</h3>
-        <ul>
-          <li class="active">Lesson 1</li>
-          <li>Lesson 2</li>
-          <li>Lesson 3</li>
-          <li>Lesson 4</li>
+          <li class="active" data-view="lessons">Lessons</li>
+          <li data-view="strengths">Strengths & Weaknesses</li>
         </ul>
       </div>
 
@@ -50,20 +53,21 @@
 
     <!-- Main Content -->
     <main class="content">
-      <header class="topbar">
-        <div>
-          <h1>Welcome, <span id="userEmail"></span></h1>
-          <p class="subtitle">Your personalized CMMC learning dashboard</p>
-        </div>
-        <div class="progress-wrapper">
-          <span class="progress-label">45% Complete</span>
-          <div class="progress-bar"><div class="progress" style="width:45%"></div></div>
-        </div>
-      </header>
 
-      <section class="lesson-body">
+      <!-- View: Lessons -->
+      <section id="lessons" class="view">
+        <header class="topbar">
+          <div>
+            <h1>Welcome, <span id="userEmail"></span></h1>
+            <p class="subtitle">Your CMMC Learning Dashboard</p>
+          </div>
+          <div class="progress-wrapper">
+            <span class="progress-label">45% Complete</span>
+            <div class="progress-bar"><div class="progress" style="width:45%"></div></div>
+          </div>
+        </header>
+
         <h2 class="section-title">Available Lessons</h2>
-
         <div class="cards">
           <div class="lesson-card">
             <h3>Lesson 1: Understanding CMMC</h3>
@@ -81,6 +85,34 @@
             <h3>Lesson 3: Assessment Readiness</h3>
             <p>Understand scoping, SSPs, POA&Ms, and evidence expectations in the CMMC assessment process.</p>
             <button class="primary">Continue</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- View: Strengths -->
+      <section id="strengths" class="view hidden">
+        <header class="topbar">
+          <h1>Strengths & Weaknesses</h1>
+          <p class="subtitle">Track your progress and see where you excel.</p>
+        </header>
+
+        <div class="strengths-container">
+          <div class="strength-item">
+            <h3>Lesson 1: Understanding CMMC</h3>
+            <div class="strength-bar"><div class="strength-fill proficient"></div></div>
+            <p class="level">Proficient</p>
+          </div>
+
+          <div class="strength-item">
+            <h3>Lesson 2: NIST SP 800-171 Overview</h3>
+            <div class="strength-bar"><div class="strength-fill intermediate"></div></div>
+            <p class="level">Intermediate</p>
+          </div>
+
+          <div class="strength-item">
+            <h3>Lesson 3: Assessment Readiness</h3>
+            <div class="strength-bar"><div class="strength-fill beginner"></div></div>
+            <p class="level">Beginner</p>
           </div>
         </div>
       </section>
