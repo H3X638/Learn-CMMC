@@ -10,19 +10,19 @@
 
 <body>
   <div class="app-container">
-    <aside class="sidebar">
-      <h2 class="logo">CMMC Portal</h2>
-      <nav>
-        <ul>
-          <li class="active">Dashboard</li>
-          <li>Lessons</li>
-          <li>Strengths</li>
-        </ul>
-      </nav>
-      <div class="logout-section">
-        <button id="logoutBtn" class="secondary">Logout</button>
-      </div>
-    </aside>
+	<aside class="sidebar">
+	  <h2 class="logo">CMMC Portal</h2>
+	  <nav>
+		<ul>
+		  <li id="navLessons" class="active">Lessons</li>
+		  <li id="navStrengths">Strengths</li>
+		  <li id="navPractice">Practice</li>
+		</ul>
+	  </nav>
+	  <div class="logout-section">
+		<button id="logoutBtn" class="secondary">Logout</button>
+	  </div>
+	</aside>
 
     <main class="content">
       <!-- View: Lessons -->
@@ -48,7 +48,6 @@
           <h1>Strengths & Weaknesses</h1>
           <p class="subtitle">Track your progress and see where you excel.</p>
         </header>
-
         <div class="strengths-container">
           <div class="strength-item">
             <h3>Lesson 1: Understanding CMMC</h3>
@@ -69,10 +68,32 @@
           </div>
         </div>
       </section>
+	  
+	  <!-- View: Practice -->
+      <section id="practice" class="view hidden">
+	   <header class="topbar">
+		 <h1>Practice Mode</h1>
+		 <p class="subtitle">Test your knowledge with practice questions and quizzes.</p>
+	   </header>
+
+	   <div class="practice-container">
+		 <div class="practice-card">
+		   <h3>Quick Quiz</h3>
+		   <p>Try a 10-question timed quiz to test your understanding.</p>
+		   <button class="primary">Start Quick Quiz</button>
+		 </div>
+
+		 <div class="practice-card">
+		   <h3>Full-Length Practice Exam</h3>
+		   <p>Take the full 100-question CCP-style practice test with explanations.</p>
+		   <button class="primary">Start Exam</button>
+		 </div>
+	  </div>
+	 </section>
     </main>
   </div>
 
-  <!-- ✅/Dynamic lessons + Firebase auth logic -->
+  <!--Dynamic lessons + Firebase auth logic -->
   <script type="module">
     import { lessons } from "./js/lessons.js";
     import { requireAuth, getUser, logout } from "./js/firebase.js";
