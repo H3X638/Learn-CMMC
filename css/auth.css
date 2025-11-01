@@ -46,6 +46,9 @@ body::before {
 	justify-content: center;
 	min-height: 100vh;
 	padding: 1rem;
+	position: relative;
+	z-index: 1;
+	
 	overflow: hidden;
 }
 
