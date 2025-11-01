@@ -147,17 +147,17 @@
 		</main>
 	</div>
 
-	<!-- Firebase + Logic -->
+	<!-- Scripts -->
 	<script type="module">
+		import "./js/sidebar.js"; // Handles all sidebar behavior
 		import { lessons } from "./js/lessons.js";
-		import { requireAuth, getUser, logout } from "./js/firebase.js";
+		import { requireAuth, getUser } from "./js/firebase.js";
 
 		// --- Firebase Auth ---
 		requireAuth();
 		getUser((user) => {
 			if (user) console.log("User:", user.email);
 		});
-		document.getElementById("logoutBtn").addEventListener("click", logout);
 
 		// --- Render Lessons Dynamically ---
 		const cardsContainer = document.querySelector(".cards");
@@ -179,7 +179,7 @@
 			cardsContainer.innerHTML = "<p>No lessons found. Check your lessons.js file.</p>";
 		}
 
-		// --- Sidebar Navigation ---
+		// --- Sidebar Navigation (Dashboard-specific view switching) ---
 		const views = {
 			overview: document.getElementById("lessons"),
 			strengths: document.getElementById("strengths"),
@@ -207,7 +207,6 @@
 		const examDateInput = document.getElementById("examDate");
 		const daysRemainingEl = document.getElementById("daysRemaining");
 
-		// Set minimum date to today
 		const today = new Date().toISOString().split('T')[0];
 		examDateInput.setAttribute('min', today);
 
@@ -245,7 +244,7 @@
 		// --- Progress Circle ---
 		function calculateLessonProgress() {
 			const totalLessons = lessons.length;
-			const completedLessons = 2; // Update based on actual completion
+			const completedLessons = parseInt(localStorage.getItem('completedLessons') || '0');
 			const percent = Math.round((completedLessons / totalLessons) * 100);
 			updateProgressCircle(percent);
 		}
@@ -258,23 +257,6 @@
 		}
 
 		calculateLessonProgress();
-
-		// --- Sidebar Collapse ---
-		const sidebar = document.querySelector(".sidebar");
-		const toggleSidebar = document.getElementById("toggleSidebar");
-
-		toggleSidebar.addEventListener("click", () => {
-			sidebar.classList.toggle("collapsed");
-			const icon = toggleSidebar.querySelector("svg");
-			
-			if (sidebar.classList.contains("collapsed")) {
-				// Change to right-pointing chevron
-				icon.innerHTML = '<polyline points="9 18 15 12 9 6"></polyline>';
-			} else {
-				// Change to left-pointing chevron
-				icon.innerHTML = '<polyline points="15 18 9 12 15 6"></polyline>';
-			}
-		});
 	</script>
 </body>
 </html>
