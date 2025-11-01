@@ -1307,3 +1307,122 @@ body.loaded {
   padding: 2rem 2.5rem;
   margin-bottom: 2rem;
 }
+
+/* === LESSON RIGHT SIDEBAR === */
+.lesson-nav {
+	position: fixed;
+	right: 3rem;
+	top: 8rem;
+	width: 260px;
+	background: #fff;
+	border: 1px solid #e5e7eb;
+	border-radius: 12px;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+	padding: 1.5rem;
+	height: fit-content;
+}
+
+.lesson-nav h3 {
+	font-family: "Poppins", sans-serif;
+	font-size: 1.1rem;
+	margin-bottom: 1rem;
+	color: var(--primary);
+}
+
+.lesson-nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.lesson-nav li {
+	margin-bottom: 0.75rem;
+}
+
+.lesson-nav a {
+	color: var(--text-light);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 0.95rem;
+	transition: color 0.2s ease;
+}
+
+.lesson-nav a:hover {
+	color: var(--accent);
+}
+
+.lesson-nav li.active a {
+	color: var(--accent);
+}
+
+/* === CONTENT BOX === */
+.content-box {
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+	padding: 2rem;
+	margin-bottom: 2rem;
+	border-left: 4px solid var(--accent);
+}
+
+.content-box h2 {
+	color: var(--primary);
+	margin-top: 0;
+}
+
+.topic-layout {
+	display: flex;
+	justify-content: space-between;
+	gap: 3rem;
+}
+
+.topic-article {
+	flex: 1;
+	max-width: 800px;
+}
+
+/* Unified Lesson Card for Topic Pages */
+.lesson-card-full {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  padding: 3rem;
+  margin-bottom: 2rem;
+  border-left: 6px solid var(--accent);
+}
+
+.lesson-card-full h2 {
+  color: var(--primary);
+  margin-top: 2rem;
+}
+
+.lesson-card-full h2:first-of-type {
+  margin-top: 0;
+}
+
+.lesson-card-full p,
+.lesson-card-full ul {
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 1.05rem;
+}
+
+.lesson-card-full ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.25rem;
+}
+
+.lesson-card-full li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.lesson-card-full li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
