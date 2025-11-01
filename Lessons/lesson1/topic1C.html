@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Topic 1C: CMMC Roles and the Assessment Process</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Poppins:wght@600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/style.css" />
+</head>
+
+<body>
+	<div class="app-container">
+		<!-- Sidebar -->
+		<aside class="sidebar">
+			<div class="sidebar-header">
+				<h2 class="logo">CMMC Portal</h2>
+				<button id="toggleSidebar" class="sidebar-toggle">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="15 18 9 12 15 6"></polyline>
+					</svg>
+				</button>
+			</div>
+
+			<nav>
+				<ul>
+					<li id="navOverview">
+						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+							<path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+						</svg>
+						<span>Learning Overview</span>
+					</li>
+					<li id="navStrengths">
+						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<line x1="18" y1="20" x2="18" y2="10"></line>
+							<line x1="12" y1="20" x2="12" y2="4"></line>
+							<line x1="6" y1="20" x2="6" y2="14"></line>
+						</svg>
+						<span>Strengths</span>
+					</li>
+					<li id="navPractice">
+						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<circle cx="12" cy="12" r="10"></circle>
+							<circle cx="12" cy="12" r="6"></circle>
+							<circle cx="12" cy="12" r="2"></circle>
+						</svg>
+						<span>Practice</span>
+					</li>
+				</ul>
+			</nav>
+
+			<div class="logout-section">
+				<button id="logoutBtn" class="secondary">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+						<polyline points="16 17 21 12 16 7"></polyline>
+						<line x1="21" y1="12" x2="9" y2="12"></line>
+					</svg>
+					<span>Logout</span>
+				</button>
+			</div>
+		</aside>
+
+		<!-- Main Content -->
+		<main class="content topic-content">
+			<div class="breadcrumb">
+				<a href="../../dashboard.html">Dashboard</a>
+				<span class="separator">›</span>
+				<a href="index.html">Lesson 1</a>
+				<span class="separator">›</span>
+				<span>Topic 1C</span>
+			</div>
+
+			<header class="topic-header">
+				<h1>Topic 1C: CMMC Roles and the Assessment Process</h1>
+				<p class="topic-subtitle">Explore the structure of the CMMC ecosystem and understand how assessments validate compliance across the Defense Industrial Base.</p>
+				<div class="topic-stats">
+					<span class="stat">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<circle cx="12" cy="12" r="10"></circle>
+							<polyline points="12 6 12 12 16 14"></polyline>
+						</svg>
+						15–30 minutes
+					</span>
+					<span class="stat">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+						</svg>
+						12 knowledge points
+					</span>
+				</div>
+			</header>
+
+			<article class="topic-article">
+				<!-- Section 1 -->
+				<section class="content-section">
+					<div class="section-header">
+						<h2>The Structure of the CMMC Ecosystem</h2>
+					</div>
+					<p>
+						The CMMC ecosystem connects the Department of Defense, accredited assessment organizations, and defense contractors. The DoD sets policy direction, while the Cyber AB (Cyber Accreditation Body) oversees accreditation, training, and quality assurance for C3PAOs and assessors.
+					</p>
+				</section>
+
+				<!-- Section 2 -->
+				<section class="content-section">
+					<div class="section-header">
+						<h2>Key Participants and Their Roles</h2>
+					</div>
+					<ul class="content-list">
+						<li><strong>Organization Seeking Certification (OSC):</strong> Implements controls, maintains documentation, and undergoes assessment for compliance.</li>
+						<li><strong>Certified Third-Party Assessment Organization (C3PAO):</strong> Conducts Level 2 assessments and verifies implementation of NIST SP 800-171 controls.</li>
+						<li><strong>Certified CMMC Assessor (CCA) / Certified CMMC Professional (CCP):</strong> CCAs lead official assessments; CCPs support readiness and preparation.</li>
+						<li><strong>Defense Industrial Base Cybersecurity Assessment Center (DIBCAC):</strong> Performs government-led assessments for Level 3 and select Level 2 programs.</li>
+						<li><strong>Cyber AB:</strong> Oversees the CMMC ecosystem, credentials assessors, and ensures assessment quality and standardization.</li>
+					</ul>
+				</section>
+
+				<!-- Section 3 -->
+				<section class="content-section">
+					<div class="section-header">
+						<h2>The Assessment Lifecycle</h2>
+					</div>
+					<ol class="content-list">
+						<li><strong>Preparation and Self-Assessment:</strong> The OSC evaluates its security posture using NIST SP 800-171, documents findings in the SSP and POA&M, and prepares for third-party review.</li>
+						<li><strong>Engagement with a C3PAO:</strong> The OSC contracts a C3PAO to conduct the assessment and assign certified assessors.</li>
+						<li><strong>Assessment Execution:</strong> Assessors review technical configurations, documentation, and interviews to confirm implementation.</li>
+						<li><strong>Findings and Remediation:</strong> The OSC addresses identified gaps and resubmits evidence where needed.</li>
+						<li><strong>Certification and Reporting:</strong> Results are reviewed by the Cyber AB, and successful certifications are recorded in the SPRS database for a three-year validity period.</li>
+					</ol>
+				</section>
+
+				<!-- Section 4 -->
+				<section class="content-section">
+					<div class="section-header">
+						<h2>Self-Assessments vs. Third-Party Assessments</h2>
+					</div>
+					<p>
+						Under CMMC 2.0, organizations are assigned assessment types based on sensitivity and contract requirements:
+					</p>
+					<ul class="content-list">
+						<li><strong>Level 1:</strong> Annual self-assessments covering 17 FAR-based practices.</li>
+						<li><strong>Level 2:</strong> Triennial third-party assessments by a C3PAO for prioritized contracts; others may self-attest.</li>
+						<li><strong>Level 3:</strong> Government-led assessments by DIBCAC.</li>
+					</ul>
+				</section>
+
+				<!-- Section 5 -->
+				<section class="content-section">
+					<div class="section-header">
+						<h2>Maintaining Compliance Between Assessments</h2>
+					</div>
+					<p>
+						Certification is only the beginning. Contractors must maintain cybersecurity practices continuously, updating documentation, conducting internal reviews, and addressing new vulnerabilities. Regular training, audits, and configuration control ensure the environment stays compliant and assessment-ready.
+					</p>
+				</section>
+
+				<!-- Section 6 - Key Takeaways -->
+				<section class="content-section key-takeaways">
+					<div class="section-header">
+						<h2>Key Takeaways</h2>
+					</div>
+					<ul class="content-list">
+						<li>CMMC compliance relies on collaboration between the DoD, Cyber AB, C3PAOs, and contractors.</li>
+						<li>The assessment process validates implementation, not just documentation.</li>
+						<li>Assessment frequency and type vary by certification level.</li>
+						<li>Maintaining compliance requires ongoing monitoring and improvement.</li>
+						<li>Certification strengthens an organization’s trustworthiness and cybersecurity posture.</li>
+					</ul>
+				</section>
+			</article>
+
+			<!-- Navigation Footer -->
+			<nav class="topic-navigation">
+				<a href="topic1B.html" class="nav-btn back-btn">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<line x1="19" y1="12" x2="5" y2="12"></line>
+						<polyline points="12 19 5 12 12 5"></polyline>
+					</svg>
+					Back to Topic 1B
+				</a>
+				<button id="markComplete" class="nav-btn complete-btn">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<polyline points="20 6 9 17 4 12"></polyline>
+					</svg>
+					Mark Complete
+				</button>
+				<a href="flashcards1C.html" class="nav-btn next-btn">
+					Next: Flashcards
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<line x1="5" y1="12" x2="19" y2="12"></line>
+						<polyline points="12 5 19 12 12 19"></polyline>
+					</svg>
+				</a>
+			</nav>
+		</main>
+	</div>
+
+	<script>
+		// Sidebar toggle
+		const sidebar = document.querySelector('.sidebar');
+		const toggleBtn = document.getElementById('toggleSidebar');
+		
+		if (toggleBtn) {
+			const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+			if (isCollapsed) sidebar.classList.add('collapsed');
+			
+			toggleBtn.addEventListener('click', () => {
+				sidebar.classList.toggle('collapsed');
+				localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
+				const icon = toggleBtn.querySelector('svg');
+				icon.innerHTML = sidebar.classList.contains('collapsed') 
+					? '<polyline points="9 18 15 12 9 6"></polyline>'
+					: '<polyline points="15 18 9 12 15 6"></polyline>';
+			});
+		}
+
+		// Mark complete
+		document.getElementById('markComplete')?.addEventListener('click', () => {
+			const completed = parseInt(localStorage.getItem('lesson1_completed') || '0');
+			localStorage.setItem('lesson1_completed', Math.min(completed + 1, 3));
+			alert('Topic marked as complete!');
+			window.location.href = 'flashcards1C.html';
+		});
+
+		// Navigation
+		document.getElementById('navOverview')?.addEventListener('click', () => {
+			window.location.href = '../../dashboard.html';
+		});
+
+		document.getElementById('logoutBtn')?.addEventListener('click', () => {
+			window.location.href = '../../index.html';
+		});
+
+		document.body.classList.add('loaded');
+	</script>
+</body>
+</html>
