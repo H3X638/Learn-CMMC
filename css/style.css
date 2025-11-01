@@ -460,3 +460,88 @@ button.secondary:hover {
 		flex-direction: column;
 	}
 }
+
+/* --- Restore Lucide Icon + Collapse Behavior --- */
+
+/* Icon sizing + spacing */
+.sidebar li i {
+	width: 22px;
+	height: 22px;
+	stroke-width: 1.75px;
+	flex-shrink: 0;
+}
+
+/* Keep sidebar text fade instead of disappearing instantly */
+.sidebar.collapsed .logo,
+.sidebar.collapsed span {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+/* Center items when collapsed */
+.sidebar.collapsed ul li {
+	justify-content: center;
+}
+
+/* Keep icon visible and centered */
+.sidebar.collapsed ul li i {
+	margin: 0 auto;
+}
+
+/* Sidebar toggle button positioning */
+.sidebar-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1.5rem;
+}
+
+/* Collapse toggle button */
+.sidebar-toggle {
+	background: transparent;
+	border: 2px solid var(--accent);
+	color: var(--accent);
+	border-radius: 8px;
+	padding: 0.4rem;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+	background: var(--accent);
+	color: var(--primary);
+}
+
+/* Smooth sidebar transition */
+.sidebar {
+	transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	overflow-x: hidden;
+}
+
+.sidebar * {
+	transition: all 0.3s ease;
+}
+
+/* Logout section fix */
+.sidebar.collapsed .logout-section {
+	padding: 0;
+	text-align: center;
+}
+
+.sidebar.collapsed .logout-section button {
+	justify-content: center;
+	width: 50px;
+	padding: 0.5rem;
+}
+
+.sidebar.collapsed .logout-section span {
+	display: none;
+}
+
+.sidebar.collapsed .logout-section i {
+	margin: 0 auto;
+}
