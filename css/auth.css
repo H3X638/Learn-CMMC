@@ -41,15 +41,13 @@ body::before {
 
 /* --- Centered Auth Container --- */
 .auth-container-centered {
+	min-height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 100vh;
-	padding: 1rem;
+	padding: 2rem;
 	position: relative;
 	z-index: 1;
-	
-	overflow: hidden;
 }
 
 .auth-card {
@@ -61,12 +59,8 @@ body::before {
 	width: 100%;
 	max-width: 440px;
 	position: relative;
-	
-	max-height: 85vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 }
+
 
 .auth-card::before {
 	content: "";
