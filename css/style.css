@@ -1,377 +1,114 @@
 :root {
-  --primary: #0c2d48;
-  --accent: #2cb1bc;
-  --bg: #f6f8fa;
-  --text: #1f1f1f;
-  --text-light: #6b7280;
-  --radius: 10px;
+	--primary: #0c2d48;
+	--accent: #2cb1bc;
+	--bg: #f6f8fa;
+	--text: #1f1f1f;
+	--text-light: #6b7280;
+	--radius: 10px;
 }
 
-/* Global */
+/* --- Global --- */
 body {
-  margin: 0;
-  font-family: "Open Sans", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  height: 100vh;
-  overflow: hidden;
+	margin: 0;
+	font-family: "Open Sans", sans-serif;
+	background: var(--bg);
+	color: var(--text);
+	height: 100vh;
+	overflow: hidden;
 }
 
 h1, h2, h3 {
-  font-family: "Poppins", sans-serif;
-  color: var(--primary);
-  margin: 0;
+	font-family: "Poppins", sans-serif;
+	color: var(--primary);
+	margin: 0;
 }
 
 .app-container {
-  display: flex;
-  width: 100%;
-  height: 100vh;
+	display: flex;
+	width: 100%;
+	height: 100vh;
 }
 
-/* Sidebar */
+/* --- Sidebar --- */
 .sidebar {
-  width: 270px;
-  background: var(--primary);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem 1rem;
-  box-sizing: border-box;
-  overflow-y: auto;
+	width: 240px;
+	background: var(--primary);
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	padding: 1.5rem 1rem;
+	box-sizing: border-box;
+	overflow-y: auto;
+	overflow-x: hidden;
+	transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar .logo {
-  font-size: 1.5rem;
-  text-align: center;
-  margin-bottom: 2rem;
+.sidebar * {
+	transition: all 0.3s ease;
 }
 
-.sidebar-section {
-  margin-bottom: 2rem;
+.sidebar-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1.5rem;
 }
 
-.sidebar-section h3 {
-  font-size: 1rem;
-  color: #bcd0e7;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.5rem;
+.sidebar-toggle {
+	background: transparent;
+	border: 2px solid var(--accent);
+	color: var(--accent);
+	border-radius: 8px;
+	padding: 0.35rem;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.25s ease;
 }
 
-.sidebar-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.sidebar-toggle:hover {
+	background: var(--accent);
+	color: var(--primary);
 }
 
-.sidebar-section li {
-  padding: 0.6rem 1rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: background 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.95rem;
+/* Collapsed state */
+.sidebar.collapsed {
+	width: 80px;
 }
 
-.sidebar-section li:hover,
-.sidebar-section li.active {
-  background: var(--accent);
-  color: var(--primary);
-  font-weight: 600;
+.sidebar.collapsed .logo,
+.sidebar.collapsed span {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
+.sidebar.collapsed ul li {
+	justify-content: center;
 }
 
-.beginner { background: #c0392b; }
-.intermediate { background: #f1c40f; }
-.proficient { background: #27ae60; }
-
-.logout-section {
-  margin-top: auto;
-  text-align: center;
-  padding-top: 1.5rem;
+.sidebar.collapsed ul li .lucide {
+	margin: 0 auto;
 }
 
-.logout-section button {
-  width: 80%;
+.sidebar.collapsed .logout-section {
+	padding: 0;
+	text-align: center;
 }
 
-/* Main Content */
-.content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 3rem;
-  overflow-y: auto;
+.sidebar.collapsed .logout-section button {
+	justify-content: center;
+	width: 50px;
+	padding: 0.5rem;
 }
 
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 2rem;
+.sidebar.collapsed .logout-section span {
+	display: none;
 }
 
-.subtitle {
-  color: var(--text-light);
-  margin-top: 0.25rem;
-  font-size: 0.95rem;
-}
-
-.progress-wrapper {
-  min-width: 240px;
-  text-align: right;
-}
-
-.progress-label {
-  font-size: 0.9rem;
-  color: var(--text-light);
-}
-
-.progress-bar {
-  width: 100%;
-  height: 8px;
-  background: #e5e7eb;
-  border-radius: var(--radius);
-  overflow: hidden;
-  margin-top: 0.25rem;
-}
-
-.progress {
-  height: 100%;
-  background: var(--accent);
-  width: 45%;
-  transition: width 0.3s ease;
-}
-
-/* Lessons */
-.lesson-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.section-title {
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--primary);
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 1.5rem;
-}
-
-.lesson-card {
-  background: #fff;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.lesson-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-}
-
-.lesson-card h3 {
-  color: var(--primary);
-  margin-bottom: 0.5rem;
-}
-
-.lesson-card p {
-  color: var(--text-light);
-  line-height: 1.5;
-  flex: 1;
-}
-
-/* Buttons */
-button {
-  font-family: "Open Sans", sans-serif;
-  font-size: 1rem;
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  padding: 0.75rem 1.5rem;
-  transition: background 0.2s, color 0.2s;
-}
-
-button.primary {
-  background: var(--primary);
-  color: #fff;
-}
-
-button.primary:hover {
-  background: #133a5e;
-}
-
-button.secondary {
-  background: transparent;
-  border: 2px solid var(--accent);
-  color: var(--accent);
-}
-
-button.secondary:hover {
-  background: var(--accent);
-  color: #fff;
-}
-
-/* Login */
-.container {
-  text-align: center;
-  background: #fff;
-  padding: 3rem 4rem;
-  border-radius: var(--radius);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  width: 320px;
-  margin: auto;
-  align-self: center;
-}
-
-.login-box input {
-  width: 100%;
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  border: 1px solid #ccc;
-  border-radius: var(--radius);
-  font-size: 1rem;
-}
-
-.login-box button {
-  width: 100%;
-  padding: 0.75rem;
-  margin-top: 1rem;
-}
-
-button.google {
-  background: #4285f4;
-  color: white;
-}
-
-button.google:hover {
-  opacity: 0.9;
-}
-
-.divider {
-  margin: 1rem 0;
-  color: var(--text-light);
-  font-size: 0.9rem;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-  }
-
-  .content {
-    margin-left: 270px;
-    padding: 2rem;
-  }
-}
-
-/* Strengths & Weaknesses View */
-.hidden {
-  display: none;
-}
-
-.strengths-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.strength-item {
-  background: #fff;
-  border-radius: var(--radius);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  padding: 1.25rem 1.5rem;
-}
-
-.strength-item h3 {
-  margin-bottom: 0.75rem;
-  color: var(--primary);
-}
-
-.strength-bar {
-  height: 10px;
-  background: #e0e0e0;
-  border-radius: var(--radius);
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-}
-
-.strength-fill {
-  height: 100%;
-  border-radius: var(--radius);
-  transition: width 0.4s ease;
-}
-
-.strength-fill.beginner { width: 30%; background: #e74c3c; }
-.strength-fill.intermediate { width: 60%; background: #f1c40f; }
-.strength-fill.proficient { width: 90%; background: #27ae60; }
-
-.level {
-  font-weight: 600;
-  color: var(--text-light);
-  font-size: 0.9rem;
-}
-
-/* --- Practice Section --- */
-.practice-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.practice-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.practice-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-}
-
-.practice-card h3 {
-  font-family: "Poppins", sans-serif;
-  color: var(--primary);
-  margin-top: 0;
-}
-
-.practice-card p {
-  color: var(--text-light);
-  line-height: 1.5;
-  margin-bottom: 1rem;
-}
-
-/* --- Sidebar Navigation Buttons --- */
+/* Sidebar list styling */
 .sidebar ul {
 	list-style: none;
 	padding: 0;
@@ -383,19 +120,13 @@ button.google:hover {
 	align-items: center;
 	gap: 0.75rem;
 	padding: 0.75rem 1rem;
-	border-radius: 10px;
+	border-radius: var(--radius);
 	cursor: pointer;
 	margin-bottom: 0.5rem;
 	font-size: 1rem;
 	font-family: "Open Sans", sans-serif;
 	transition: all 0.2s ease;
 	border: 2px solid transparent;
-}
-
-.sidebar li i {
-	width: 20px;
-	height: 20px;
-	stroke-width: 1.75px;
 }
 
 .sidebar li:hover {
@@ -407,6 +138,24 @@ button.google:hover {
 	border-color: var(--accent);
 	background: rgba(255, 255, 255, 0.15);
 	font-weight: 600;
+}
+
+/* --- Lucide Icons --- */
+.sidebar li .lucide {
+	width: 22px;
+	height: 22px;
+	stroke-width: 1.75px;
+	color: currentColor;
+	flex-shrink: 0;
+}
+
+.sidebar li:hover span,
+.sidebar li:hover .lucide {
+	color: var(--accent);
+}
+
+.sidebar li.active .lucide {
+	color: var(--accent);
 }
 
 /* --- Logout Button --- */
@@ -436,32 +185,43 @@ button.google:hover {
 	color: var(--primary);
 }
 
-/* Adjust hover outline color for dark background */
-.sidebar li:hover span,
-.sidebar li:hover i {
-	color: var(--accent);
+/* --- Main Content --- */
+.content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 2rem 3rem;
+	overflow-y: auto;
 }
 
-/* --- Exam Countdown --- */
-.exam-header {
+/* --- Overview Header Layout --- */
+.overview-header {
+	margin-bottom: 2rem;
+}
+
+.overview-grid {
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
 	gap: 2rem;
+	align-items: stretch;
 	flex-wrap: wrap;
 }
 
-.exam-countdown {
+.exam-countdown,
+.progress-overview {
 	background: white;
 	border-radius: 12px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 	padding: 1.5rem;
-	width: 340px;
-	display: flex;
-	flex-direction: column;
-	gap: 0.75rem;
+	flex: 1;
+	min-width: 280px;
 }
 
+.exam-countdown h1,
+.progress-overview h2 {
+	margin-bottom: 0.75rem;
+}
+
+/* --- Exam Countdown --- */
 .calendar-controls {
 	display: flex;
 	flex-direction: column;
@@ -487,92 +247,9 @@ button.google:hover {
 	color: var(--text-light);
 }
 
-/* --- Collapsible Sidebar --- */
-.sidebar {
-	width: 240px;
-	background: var(--primary-dark, #0c2d48);
-	color: white;
-	display: flex;
-	flex-direction: column;
-	padding: 1.5rem 1rem;
-	transition: width 0.3s ease;
-	overflow-x: hidden;
-}
-
-.sidebar.collapsed {
-	width: 80px;
-}
-
-.sidebar-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 1.5rem;
-}
-
-.sidebar-toggle {
-	background: transparent;
-	border: 2px solid var(--accent, #2cb1bc);
-	color: var(--accent, #2cb1bc);
-	border-radius: 8px;
-	padding: 0.25rem;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: all 0.25s ease;
-}
-
-.sidebar-toggle:hover {
-	background: var(--accent);
-	color: var(--primary-dark, #0c2d48);
-}
-
-.sidebar.collapsed .logo,
-.sidebar.collapsed span {
-	display: none;
-}
-
-.sidebar.collapsed ul li {
-	justify-content: center;
-}
-
-.sidebar.collapsed ul li i {
-	margin: 0;
-}
-
-/* --- Sidebar Collapsed State Fixes --- */
-.sidebar.collapsed .logout-section {
-	padding: 0;
-	text-align: center;
-}
-
-.sidebar.collapsed .logout-section button {
-	justify-content: center;
-	width: 50px;
-	padding: 0.5rem;
-}
-
-.sidebar.collapsed .logout-section span {
-	display: none;
-}
-
-.sidebar.collapsed .logout-section i {
-	margin: 0;
-}
-
-
-/* --- Circular Progress (Lesson Completion) --- */
+/* --- Circular Progress --- */
 .progress-overview {
 	text-align: center;
-	width: 180px;
-}
-
-.progress-overview h2 {
-	font-family: "Poppins", sans-serif;
-	color: var(--primary);
-	font-size: 1.1rem;
-	margin-bottom: 1rem;
 }
 
 .progress-circle {
@@ -583,37 +260,202 @@ button.google:hover {
 }
 
 .progress-circle svg {
-	transform: rotate(-90deg);
 	width: 100%;
 	height: 100%;
+	transform: rotate(-90deg);
 }
 
-.progress-circle path {
+.progress-circle circle {
 	fill: none;
 	stroke-width: 3;
 	stroke-linecap: round;
 }
 
-.progress-circle .bg {
+.progress-circle .progress-bg {
 	stroke: #e5e7eb;
 }
 
-.progress-circle .meter {
-	stroke: var(--accent, #2cb1bc);
-	stroke-dasharray: 0,100;
-	transition: stroke-dasharray 0.8s ease;
+.progress-circle .progress-meter {
+	stroke: var(--accent);
+	stroke-dasharray: 0 100;
+	transition: stroke-dasharray 1s ease;
 }
 
 .progress-circle .percentage {
-	fill: black;
-	font-size: 0.7em;
+	fill: #000;
+	font-size: 0.8em;
 	text-anchor: middle;
 	dominant-baseline: middle;
 	transform: rotate(90deg);
+	font-weight: 600;
 }
 
 .percent-label {
 	margin-top: 0.5rem;
 	color: var(--text-light);
 	font-size: 0.9rem;
+}
+
+/* --- Lessons --- */
+.section-title {
+	font-weight: 600;
+	margin-bottom: 1rem;
+	color: var(--primary);
+}
+
+.cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 2rem;
+	margin-top: 1.5rem;
+}
+
+.lesson-card {
+	background: #fff;
+	border-radius: var(--radius);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lesson-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-card h3 {
+	color: var(--primary);
+	margin-bottom: 0.5rem;
+}
+
+.lesson-card p {
+	color: var(--text-light);
+	line-height: 1.5;
+	flex: 1;
+}
+
+/* --- Buttons --- */
+button {
+	font-family: "Open Sans", sans-serif;
+	font-size: 1rem;
+	border: none;
+	border-radius: var(--radius);
+	cursor: pointer;
+	padding: 0.75rem 1.5rem;
+	transition: background 0.2s, color 0.2s;
+}
+
+button.primary {
+	background: var(--primary);
+	color: #fff;
+}
+
+button.primary:hover {
+	background: #133a5e;
+}
+
+button.secondary {
+	background: transparent;
+	border: 2px solid var(--accent);
+	color: var(--accent);
+}
+
+button.secondary:hover {
+	background: var(--accent);
+	color: #fff;
+}
+
+/* --- Hidden Sections --- */
+.hidden {
+	display: none;
+}
+
+/* --- Strengths Section --- */
+.strengths-container {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin-top: 1rem;
+}
+
+.strength-item {
+	background: #fff;
+	border-radius: var(--radius);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+	padding: 1.25rem 1.5rem;
+}
+
+.strength-item h3 {
+	margin-bottom: 0.75rem;
+	color: var(--primary);
+}
+
+.strength-bar {
+	height: 10px;
+	background: #e0e0e0;
+	border-radius: var(--radius);
+	overflow: hidden;
+	margin-bottom: 0.5rem;
+}
+
+.strength-fill {
+	height: 100%;
+	border-radius: var(--radius);
+	transition: width 0.4s ease;
+}
+
+.strength-fill.beginner { width: 30%; background: #e74c3c; }
+.strength-fill.intermediate { width: 60%; background: #f1c40f; }
+.strength-fill.proficient { width: 90%; background: #27ae60; }
+
+.level {
+	font-weight: 600;
+	color: var(--text-light);
+	font-size: 0.9rem;
+}
+
+/* --- Practice Section --- */
+.practice-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 2rem;
+	margin-top: 2rem;
+}
+
+.practice-card {
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.practice-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.practice-card h3 {
+	font-family: "Poppins", sans-serif;
+	color: var(--primary);
+	margin-top: 0;
+}
+
+.practice-card p {
+	color: var(--text-light);
+	line-height: 1.5;
+	margin-bottom: 1rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+	.overview-grid {
+		flex-direction: column;
+	}
 }

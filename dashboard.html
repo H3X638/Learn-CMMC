@@ -11,40 +11,40 @@
 <body>
 	<div class="app-container">
 		<!-- Sidebar -->
-	<aside class="sidebar">
-		<div class="sidebar-header">
-			<h2 class="logo">CMMC Portal</h2>
-			<button id="toggleSidebar" class="sidebar-toggle">
-				<i data-lucide="chevron-left"></i>
-			</button>
-		</div>
+		<aside class="sidebar">
+			<div class="sidebar-header">
+				<h2 class="logo">CMMC Portal</h2>
+				<button id="toggleSidebar" class="sidebar-toggle">
+					<i data-lucide="chevron-left"></i>
+				</button>
+			</div>
 
-		<nav>
-			<ul>
-				<li id="navOverview" class="active">
-					<i data-lucide="book-open"></i>
-					<span>Learning Overview</span>
-				</li>
-				<li id="navStrengths">
-					<i data-lucide="bar-chart-3"></i>
-					<span>Strengths</span>
-				</li>
-				<li id="navPractice">
-					<i data-lucide="target"></i>
-					<span>Practice</span>
-				</li>
-			</ul>
-		</nav>
+			<nav>
+				<ul>
+					<li id="navOverview" class="active">
+						<i data-lucide="book-open"></i>
+						<span>Learning Overview</span>
+					</li>
+					<li id="navStrengths">
+						<i data-lucide="bar-chart-3"></i>
+						<span>Strengths</span>
+					</li>
+					<li id="navPractice">
+						<i data-lucide="target"></i>
+						<span>Practice</span>
+					</li>
+				</ul>
+			</nav>
 
-		<div class="logout-section">
-			<button id="logoutBtn" class="secondary">
-				<i data-lucide="log-out"></i> <span>Logout</span>
-			</button>
-		</div>
-	</aside>
+			<div class="logout-section">
+				<button id="logoutBtn" class="secondary">
+					<i data-lucide="log-out"></i> <span>Logout</span>
+				</button>
+			</div>
+		</aside>
 
-	<!-- Lucide Icons CDN -->
-	<script src="https://unpkg.com/lucide@latest"></script>
+		<!-- Lucide Icons CDN -->
+		<script src="https://unpkg.com/lucide@latest"></script>
 
 		<!-- Main Content -->
 		<main class="content">
@@ -161,9 +161,9 @@
 				<button class="primary" data-lesson-id="${lesson.id}">Start Lesson</button>
 			`;
 			
-			const button = card.querySelector('button');
-			button.addEventListener('click', () => {
-				window.location.href = `lesson${lesson.id}.html`;
+			const button = card.querySelector("button");
+			button.addEventListener("click", () => {
+				window.location.href = \`lesson${lesson.id}.html\`;
 			});
 			
 			cardsContainer.appendChild(card);
@@ -171,7 +171,7 @@
 
 		// --- Sidebar Navigation ---
 		const views = {
-			overview: document.getElementById("lessons"), // renamed for clarity
+			overview: document.getElementById("lessons"),
 			strengths: document.getElementById("strengths"),
 			practice: document.getElementById("practice"),
 		};
@@ -197,14 +197,12 @@
 		const examDateInput = document.getElementById("examDate");
 		const daysRemainingEl = document.getElementById("daysRemaining");
 
-		// Load saved date from localStorage
 		const savedDate = localStorage.getItem("examDate");
 		if (savedDate) {
 			examDateInput.value = savedDate;
 			updateCountdown(savedDate);
 		}
 
-		// Update countdown when user selects a new date
 		examDateInput.addEventListener("change", (e) => {
 			const selectedDate = e.target.value;
 			localStorage.setItem("examDate", selectedDate);
@@ -224,27 +222,25 @@
 			} else if (diffDays === 0) {
 				daysRemainingEl.textContent = "Exam day is today!";
 			} else {
-				daysRemainingEl.textContent = `${diffDays} day${diffDays !== 1 ? "s" : ""} until exam`;
+				daysRemainingEl.textContent = \`\${diffDays} day\${diffDays !== 1 ? "s" : ""} until exam\`;
 			}
 		}
 		
 		// --- Lesson Completion Progress ---
 		function calculateLessonProgress() {
 			const totalLessons = lessons.length;
-			// Example: dynamically completed lessons (later will come from Firestore)
 			const completedLessons = 10; 
 			const percent = Math.round((completedLessons / totalLessons) * 100);
 			updateProgressCircle(percent);
 		}
 
 		function updateProgressCircle(percent) {
-			const meter = document.querySelector(".meter");
+			const meter = document.querySelector(".progress-meter");
 			const text = document.querySelector(".percentage");
-			meter.setAttribute("stroke-dasharray", `${percent},100`);
-			text.textContent = `${percent}%`;
+			meter.setAttribute("stroke-dasharray", \`\${percent},100\`);
+			text.textContent = \`\${percent}%\`;
 		}
 
-		// Initialize with example data
 		calculateLessonProgress();
 
 		// --- Sidebar Collapse ---
@@ -253,14 +249,20 @@
 
 		toggleSidebar.addEventListener("click", () => {
 			sidebar.classList.toggle("collapsed");
-			// Swap icon direction
 			const icon = toggleSidebar.querySelector("i");
-			icon.setAttribute("data-lucide", sidebar.classList.contains("collapsed") ? "chevron-right" : "chevron-left");
-			lucide.createIcons();
+			icon.setAttribute(
+				"data-lucide",
+				sidebar.classList.contains("collapsed") ? "chevron-right" : "chevron-left"
+			);
+			lucide.createIcons({
+				attrs: { width: "22", height: "22", stroke: "currentColor", "stroke-width": 1.75 }
+			});
 		});
 
 		// Initialize icons after everything renders
-		lucide.createIcons();
+		lucide.createIcons({
+			attrs: { width: "22", height: "22", stroke: "currentColor", "stroke-width": 1.75 }
+		});
 	</script>
 </body>
 </html>
