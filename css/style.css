@@ -486,3 +486,113 @@ button.google:hover {
 	font-weight: 500;
 	color: var(--text-light);
 }
+
+/* --- Collapsible Sidebar --- */
+.sidebar {
+	width: 240px;
+	background: var(--primary-dark, #0c2d48);
+	color: white;
+	display: flex;
+	flex-direction: column;
+	padding: 1.5rem 1rem;
+	transition: width 0.3s ease;
+	overflow-x: hidden;
+}
+
+.sidebar.collapsed {
+	width: 80px;
+}
+
+.sidebar-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1.5rem;
+}
+
+.sidebar-toggle {
+	background: transparent;
+	border: 2px solid var(--accent, #2cb1bc);
+	color: var(--accent, #2cb1bc);
+	border-radius: 8px;
+	padding: 0.25rem;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.25s ease;
+}
+
+.sidebar-toggle:hover {
+	background: var(--accent);
+	color: var(--primary-dark, #0c2d48);
+}
+
+.sidebar.collapsed .logo,
+.sidebar.collapsed span {
+	display: none;
+}
+
+.sidebar.collapsed ul li {
+	justify-content: center;
+}
+
+.sidebar.collapsed ul li i {
+	margin: 0;
+}
+
+/* --- Circular Progress (Lesson Completion) --- */
+.progress-overview {
+	text-align: center;
+	width: 180px;
+}
+
+.progress-overview h2 {
+	font-family: "Poppins", sans-serif;
+	color: var(--primary);
+	font-size: 1.1rem;
+	margin-bottom: 1rem;
+}
+
+.progress-circle {
+	position: relative;
+	width: 140px;
+	height: 140px;
+	margin: 0 auto;
+}
+
+.progress-circle svg {
+	transform: rotate(-90deg);
+	width: 100%;
+	height: 100%;
+}
+
+.progress-circle path {
+	fill: none;
+	stroke-width: 3;
+	stroke-linecap: round;
+}
+
+.progress-circle .bg {
+	stroke: #e5e7eb;
+}
+
+.progress-circle .meter {
+	stroke: var(--accent, #2cb1bc);
+	stroke-dasharray: 0,100;
+	transition: stroke-dasharray 0.8s ease;
+}
+
+.progress-circle .percentage {
+	fill: black;
+	font-size: 0.7em;
+	text-anchor: middle;
+	dominant-baseline: middle;
+	transform: rotate(90deg);
+}
+
+.percent-label {
+	margin-top: 0.5rem;
+	color: var(--text-light);
+	font-size: 0.9rem;
+}

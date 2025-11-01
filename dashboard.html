@@ -12,7 +12,12 @@
 	<div class="app-container">
 		<!-- Sidebar -->
 	<aside class="sidebar">
-		<h2 class="logo">CMMC Portal</h2>
+		<div class="sidebar-header">
+			<h2 class="logo">CMMC Portal</h2>
+			<button id="toggleSidebar" class="sidebar-toggle">
+				<i data-lucide="chevron-left"></i>
+			</button>
+		</div>
 		<nav>
 			<ul>
 				<li id="navLessons" class="active">
@@ -36,6 +41,7 @@
 		</div>
 	</aside>
 
+
 	<!-- Lucide Icons CDN -->
 	<script src="https://unpkg.com/lucide@latest"></script>
 
@@ -47,7 +53,6 @@
 					<div class="exam-countdown">
 						<h1>Exam Countdown</h1>
 						<p class="subtitle">Select your exam date to track remaining days.</p>
-
 						<div class="calendar-controls">
 							<label for="examDate">Exam Date:</label>
 							<input type="date" id="examDate">
@@ -55,18 +60,24 @@
 						</div>
 					</div>
 
-					<div class="progress-wrapper">
-						<span class="progress-label">45% Complete</span>
-						<div class="progress-bar"><div class="progress" style="width:45%"></div></div>
+					<div class="progress-overview">
+						<h2>Learning Progress</h2>
+						<div class="progress-circle">
+							<svg viewBox="0 0 36 36">
+								<path class="bg" d="M18 2.0845a15.9155 15.9155 0 0 1 0 31.831a15.9155 15.9155 0 0 1 0-31.831" />
+								<path class="meter" stroke-dasharray="72,100" d="M18 2.0845a15.9155 15.9155 0 0 1 0 31.831a15.9155 15.9155 0 0 1 0-31.831" />
+								<text x="18" y="20.35" class="percentage">72%</text>
+							</svg>
+							<p class="percent-label">Lesson & Section Completion</p>
+						</div>
 					</div>
 				</header>
-
 				<h2 class="section-title">Available Lessons</h2>
 				<div class="cards"></div>
 			</section>
 
 			<!-- View: Strengths -->
-			<section id="strengths" class="view hidden">
+			<section id="strengths & weaknesses" class="view hidden">
 				<header class="topbar">
 					<h1>Strengths & Weaknesses</h1>
 					<p class="subtitle">Track your progress and see where you excel.</p>
@@ -177,6 +188,7 @@
 		navItems.lessons.addEventListener("click", () => showView("lessons"));
 		navItems.strengths.addEventListener("click", () => showView("strengths"));
 		navItems.practice.addEventListener("click", () => showView("practice"));
+		
 		// --- Exam Countdown ---
 		const examDateInput = document.getElementById("examDate");
 		const daysRemainingEl = document.getElementById("daysRemaining");
@@ -211,6 +223,37 @@
 				daysRemainingEl.textContent = `${diffDays} day${diffDays !== 1 ? "s" : ""} until exam`;
 			}
 		}
+		
+		// --- Lesson Completion Progress ---
+		function calculateLessonProgress() {
+			const totalLessons = lessons.length;
+			// Example: dynamically completed lessons (later will come from Firestore)
+			const completedLessons = 10; 
+			const percent = Math.round((completedLessons / totalLessons) * 100);
+			updateProgressCircle(percent);
+		}
+
+		function updateProgressCircle(percent) {
+			const meter = document.querySelector(".meter");
+			const text = document.querySelector(".percentage");
+			meter.setAttribute("stroke-dasharray", `${percent},100`);
+			text.textContent = `${percent}%`;
+		}
+
+		// Initialize with example data
+		calculateLessonProgress();
+
+		// --- Sidebar Collapse ---
+		const sidebar = document.querySelector(".sidebar");
+		const toggleSidebar = document.getElementById("toggleSidebar");
+
+		toggleSidebar.addEventListener("click", () => {
+			sidebar.classList.toggle("collapsed");
+			// Swap icon direction
+			const icon = toggleSidebar.querySelector("i");
+			icon.setAttribute("data-lucide", sidebar.classList.contains("collapsed") ? "chevron-right" : "chevron-left");
+			lucide.createIcons();
+		});
 
 		// Initialize icons after everything renders
 		lucide.createIcons();
