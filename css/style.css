@@ -334,3 +334,39 @@ button.google:hover {
   color: var(--text-light);
   font-size: 0.9rem;
 }
+
+/* --- Practice Section --- */
+.practice-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.practice-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.practice-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.practice-card h3 {
+  font-family: "Poppins", sans-serif;
+  color: var(--primary);
+  margin-top: 0;
+}
+
+.practice-card p {
+  color: var(--text-light);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}

@@ -1,163 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CMMC Learning Portal – Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Poppins:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CMMC Learning Portal – Dashboard</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Poppins:wght@600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <div class="app-container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <h2 class="logo">CMMC Portal</h2>
-      <nav>
-        <ul>
-          <li id="navLessons" class="active">Lessons</li>
-          <li id="navStrengths">Strengths</li>
-          <li id="navPractice">Practice</li>
-        </ul>
-      </nav>
-      <div class="logout-section">
-        <button id="logoutBtn" class="secondary">Logout</button>
-      </div>
-    </aside>
+	<div class="app-container">
+		<!-- Sidebar -->
+		<aside class="sidebar">
+			<h2 class="logo">CMMC Portal</h2>
+			<nav>
+				<ul>
+					<li id="navLessons" class="active">Lessons</li>
+					<li id="navStrengths">Strengths</li>
+					<li id="navPractice">Practice</li>
+				</ul>
+			</nav>
+			<div class="logout-section">
+				<button id="logoutBtn" class="secondary">Logout</button>
+			</div>
+		</aside>
 
-    <!-- Main Content -->
-    <main class="content">
-      <!-- View: Lessons -->
-      <section id="lessons" class="view">
-        <header class="topbar">
-          <div>
-            <h1>Welcome, <span id="userEmail"></span></h1>
-            <p class="subtitle">Your CMMC Learning Dashboard</p>
-          </div>
-          <div class="progress-wrapper">
-            <span class="progress-label">45% Complete</span>
-            <div class="progress-bar">
-              <div class="progress" style="width:45%"></div>
-            </div>
-          </div>
-        </header>
+		<!-- Main Content -->
+		<main class="content">
+			<!-- View: Lessons -->
+			<section id="lessons" class="view">
+				<header class="topbar">
+					<div>
+						<h1>Welcome, <span id="userEmail"></span></h1>
+						<p class="subtitle">Your CMMC Learning Dashboard</p>
+					</div>
+					<div class="progress-wrapper">
+						<span class="progress-label">45% Complete</span>
+						<div class="progress-bar">
+							<div class="progress" style="width:45%"></div>
+						</div>
+					</div>
+				</header>
 
-        <h2 class="section-title">Available Lessons</h2>
-        <div class="cards"></div>
-      </section>
+				<h2 class="section-title">Available Lessons</h2>
+				<div class="cards"></div>
+			</section>
 
-      <!-- View: Strengths -->
-      <section id="strengths" class="view hidden">
-        <header class="topbar">
-          <h1>Strengths & Weaknesses</h1>
-          <p class="subtitle">Track your progress and see where you excel.</p>
-        </header>
+			<!-- View: Strengths -->
+			<section id="strengths" class="view hidden">
+				<header class="topbar">
+					<h1>Strengths & Weaknesses</h1>
+					<p class="subtitle">Track your progress and see where you excel.</p>
+				</header>
 
-        <div class="strengths-container">
-          <div class="strength-item">
-            <h3>Lesson 1: Understanding CMMC</h3>
-            <div class="strength-bar">
-              <div class="strength-fill proficient"></div>
-            </div>
-            <p class="level">Proficient</p>
-          </div>
+				<div class="strengths-container">
+					<div class="strength-item">
+						<h3>Lesson 1: Understanding CMMC</h3>
+						<div class="strength-bar">
+							<div class="strength-fill proficient"></div>
+						</div>
+						<p class="level">Proficient</p>
+					</div>
 
-          <div class="strength-item">
-            <h3>Lesson 2: NIST SP 800-171 Overview</h3>
-            <div class="strength-bar">
-              <div class="strength-fill intermediate"></div>
-            </div>
-            <p class="level">Intermediate</p>
-          </div>
+					<div class="strength-item">
+						<h3>Lesson 2: NIST SP 800-171 Overview</h3>
+						<div class="strength-bar">
+							<div class="strength-fill intermediate"></div>
+						</div>
+						<p class="level">Intermediate</p>
+					</div>
 
-          <div class="strength-item">
-            <h3>Lesson 3: Assessment Readiness</h3>
-            <div class="strength-bar">
-              <div class="strength-fill beginner"></div>
-            </div>
-            <p class="level">Beginner</p>
-          </div>
-        </div>
-      </section>
+					<div class="strength-item">
+						<h3>Lesson 3: Assessment Readiness</h3>
+						<div class="strength-bar">
+							<div class="strength-fill beginner"></div>
+						</div>
+						<p class="level">Beginner</p>
+					</div>
+				</div>
+			</section>
 
-      <!-- View: Practice -->
-      <section id="practice" class="view hidden">
-        <header class="topbar">
-          <h1>Practice Mode</h1>
-          <p class="subtitle">Test your knowledge with practice questions and quizzes.</p>
-        </header>
+			<!-- View: Practice -->
+			<section id="practice" class="view hidden">
+				<header class="topbar">
+					<h1>Practice Mode</h1>
+					<p class="subtitle">Test your knowledge with practice questions and quizzes.</p>
+				</header>
 
-        <div class="practice-container">
-          <div class="practice-card">
-            <h3>Quick Quiz</h3>
-            <p>Try a 10-question timed quiz to test your understanding.</p>
-            <button class="primary">Start Quick Quiz</button>
-          </div>
+				<div class="practice-container">
+					<div class="practice-card">
+						<h3>Quick Quiz</h3>
+						<p>Try a 10-question timed quiz to test your understanding.</p>
+						<button class="primary">Start Quick Quiz</button>
+					</div>
 
-          <div class="practice-card">
-            <h3>Full-Length Practice Exam</h3>
-            <p>Take the full 100-question CCP-style practice test with explanations.</p>
-            <button class="primary">Start Exam</button>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
+					<div class="practice-card">
+						<h3>Full-Length Practice Exam</h3>
+						<p>Take the full 100-question CCP-style practice test with explanations.</p>
+						<button class="primary">Start Exam</button>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
 
-  <!-- Firebase + Navigation -->
-  <script type="module">
-    import { lessons } from "./js/lessons.js";
-    import { requireAuth, getUser, logout } from "./js/firebase.js";
+	<!-- Firebase + Navigation -->
+	<script type="module">
+		import { lessons } from "./js/lessons.js";
+		import { requireAuth, getUser, logout } from "./js/firebase.js";
 
-    // --- Firebase Auth ---
-    requireAuth();
-    getUser((user) => {
-      if (user) document.getElementById("userEmail").textContent = user.email;
-    });
-    document.getElementById("logoutBtn").addEventListener("click", logout);
+		// --- Firebase Auth ---
+		requireAuth();
+		getUser((user) => {
+			if (user) document.getElementById("userEmail").textContent = user.email;
+		});
+		document.getElementById("logoutBtn").addEventListener("click", logout);
 
-    // --- Render Lessons Dynamically ---
-    const cardsContainer = document.querySelector(".cards");
-	lessons.forEach((lesson) => {
-	  const card = document.createElement("div");
-	  card.classList.add("lesson-card");
-	  card.innerHTML = `
-		<h3>Lesson ${lesson.id}: ${lesson.title}</h3>
-		<p>${lesson.focus}</p>
-		<button class="primary" data-lesson-id="${lesson.id}">Start Lesson</button>
-	  `;
-	  
-	  const button = card.querySelector('button');
-	  button.addEventListener('click', () => {
-		window.location.href = `lesson${lesson.id}.html`;
-	  });
-	  
-	  cardsContainer.appendChild(card);
-	});
+		// --- Render Lessons Dynamically ---
+		const cardsContainer = document.querySelector(".cards");
+		lessons.forEach((lesson) => {
+			const card = document.createElement("div");
+			card.classList.add("lesson-card");
+			card.innerHTML = `
+				<h3>Lesson ${lesson.id}: ${lesson.title}</h3>
+				<p>${lesson.focus}</p>
+				<button class="primary" data-lesson-id="${lesson.id}">Start Lesson</button>
+			`;
+			
+			const button = card.querySelector('button');
+			button.addEventListener('click', () => {
+				window.location.href = `lesson${lesson.id}.html`;
+			});
+			
+			cardsContainer.appendChild(card);
+		});
 
-    // --- Sidebar Navigation ---
-    const views = {
-      lessons: document.getElementById("lessons"),
-      strengths: document.getElementById("strengths"),
-      practice: document.getElementById("practice"),
-    };
+		// --- Sidebar Navigation ---
+		const views = {
+			lessons: document.getElementById("lessons"),
+			strengths: document.getElementById("strengths"),
+			practice: document.getElementById("practice"),
+		};
 
-    const navItems = {
-      lessons: document.getElementById("navLessons"),
-      strengths: document.getElementById("navStrengths"),
-      practice: document.getElementById("navPractice"),
-    };
+		const navItems = {
+			lessons: document.getElementById("navLessons"),
+			strengths: document.getElementById("navStrengths"),
+			practice: document.getElementById("navPractice"),
+		};
 
-    function showView(viewName) {
-      Object.values(views).forEach((v) => v.classList.add("hidden"));
-      Object.values(navItems).forEach((n) => n.classList.remove("active"));
-      views[viewName].classList.remove("hidden");
-      navItems[viewName].classList.add("active");
-    }
+		function showView(viewName) {
+			Object.values(views).forEach((v) => v.classList.add("hidden"));
+			Object.values(navItems).forEach((n) => n.classList.remove("active"));
+			views[viewName].classList.remove("hidden");
+			navItems[viewName].classList.add("active");
+		}
 
-    navItems.lessons.addEventListener("click", () => showView("lessons"));
-    navItems.strengths.addEventListener("click", () => showView("strengths"));
-    navItems.practice.addEventListener("click", () => showView("practice"));
-  </script>
+		navItems.lessons.addEventListener("click", () => showView("lessons"));
+		navItems.strengths.addEventListener("click", () => showView("strengths"));
+		navItems.practice.addEventListener("click", () => showView("practice"));
+	</script>
 </body>
 </html>
