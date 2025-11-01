@@ -1251,3 +1251,59 @@ body.loaded {
 		display: none;
 	}
 }
+
+/* === Lesson Navigation Sidebar === */
+.lesson-nav {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  width: 260px;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+
+.lesson-nav h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.lesson-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lesson-nav li {
+  margin-bottom: 0.75rem;
+}
+
+.lesson-nav a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.lesson-nav a:hover {
+  color: var(--accent);
+}
+
+.lesson-nav a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* === Content Box === */
+.content-wrapper {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+}

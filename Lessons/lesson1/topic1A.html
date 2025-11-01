@@ -6,6 +6,81 @@
 	<title>Topic 1A: CMMC Foundations</title>
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Poppins:wght@600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../../css/style.css" />
+	<style>
+		/* === Layout for Topic === */
+		.topic-layout {
+			display: flex;
+			gap: 2rem;
+			align-items: flex-start;
+		}
+
+		/* === Content Wrapper === */
+		.content-wrapper {
+			background: white;
+			border-radius: 12px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+			padding: 2rem 2.5rem;
+			flex: 1;
+		}
+
+		/* === Lesson Navigation === */
+		.lesson-nav {
+			position: sticky;
+			top: 2rem;
+			align-self: start;
+			background: white;
+			border-radius: 12px;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+			padding: 1.5rem;
+			width: 260px;
+			max-height: calc(100vh - 4rem);
+			overflow-y: auto;
+		}
+
+		.lesson-nav h3 {
+			font-family: "Poppins", sans-serif;
+			font-size: 1.1rem;
+			color: var(--primary);
+			margin-bottom: 1rem;
+		}
+
+		.lesson-nav ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.lesson-nav li {
+			margin-bottom: 0.75rem;
+		}
+
+		.lesson-nav a {
+			text-decoration: none;
+			color: var(--text-light);
+			font-weight: 500;
+			transition: color 0.2s ease;
+		}
+
+		.lesson-nav a:hover {
+			color: var(--accent);
+		}
+
+		.lesson-nav a.active {
+			color: var(--accent);
+			font-weight: 600;
+		}
+
+		@media (max-width: 900px) {
+			.topic-layout {
+				flex-direction: column;
+			}
+
+			.lesson-nav {
+				width: 100%;
+				position: static;
+			}
+		}
+	</style>
 </head>
 
 <body>
@@ -63,136 +138,63 @@
 
 		<!-- Main Content -->
 		<main class="content topic-content">
-			<div class="breadcrumb">
-				<a href="../../dashboard.html">Dashboard</a>
-				<span class="separator">›</span>
-				<a href="index.html">Lesson 1</a>
-				<span class="separator">›</span>
-				<span>Topic 1A</span>
-			</div>
+			<div class="topic-layout">
+				<div class="content-wrapper">
+					<div class="breadcrumb">
+						<a href="../../dashboard.html">Dashboard</a>
+						<span class="separator">›</span>
+						<a href="index.html">Lesson 1</a>
+						<span class="separator">›</span>
+						<span>Topic 1A</span>
+					</div>
 
-			<header class="topic-header">
-				<h1>Topic 1A: CMMC Foundations</h1>
-				<p class="topic-subtitle">Understand the origins, purpose, and structure of the Cybersecurity Maturity Model Certification (CMMC).</p>
-				<div class="topic-stats">
-					<span class="stat">
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-							<circle cx="12" cy="12" r="10"></circle>
-							<polyline points="12 6 12 12 16 14"></polyline>
-						</svg>
-						15–30 minutes
-					</span>
-					<span class="stat">
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-							<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-						</svg>
-						10 knowledge points
-					</span>
+					<header class="topic-header">
+						<h1>Topic 1A: CMMC Foundations</h1>
+						<p class="topic-subtitle">
+							Understand the origins, purpose, and structure of the Cybersecurity Maturity Model Certification (CMMC).
+						</p>
+						<div class="topic-stats">
+							<span class="stat">5–30 minutes</span>
+							<span class="stat">10 knowledge points</span>
+						</div>
+					</header>
+
+					<article class="topic-article">
+						<section class="content-section">
+							<div class="section-header"><h2>The Origins of CMMC</h2></div>
+							<p>
+								The Cybersecurity Maturity Model Certification (CMMC) was created by the U.S. Department of Defense to protect Controlled Unclassified Information (CUI) handled by contractors in the Defense Industrial Base (DIB). Before CMMC, contractors were required to follow NIST SP 800-171, which outlines 110 cybersecurity controls.
+							</p>
+							<p>
+								Compliance was self-attested, meaning companies could claim they met requirements without verification. Over time, repeated data breaches showed that this approach was ineffective. CUI continued to be lost or stolen due to weak or inconsistent controls. To address this, the DoD introduced CMMC to ensure all contractors implement and verify strong cybersecurity practices.
+							</p>
+						</section>
+
+						<section class="content-section">
+							<div class="section-header"><h2>Why CMMC Matters</h2></div>
+							<p>
+								CMMC ensures that every organization handling DoD information protects it to a verified standard. Certification is now a requirement for winning certain contracts, which makes it a business necessity rather than a technical option. The model helps organizations identify and close security gaps, strengthen internal processes, and demonstrate accountability to government partners.
+							</p>
+							<ul class="content-list">
+								<li>Identifies and corrects cybersecurity weaknesses</li>
+								<li>Encourages consistent, repeatable practices</li>
+								<li>Builds trust throughout the defense supply chain</li>
+							</ul>
+						</section>
+					</article>
 				</div>
-			</header>
 
-			<article class="topic-article">
-				<!-- Section 1 -->
-				<section class="content-section">
-					<div class="section-header">
-						<h2>The Origins of CMMC</h2>
-					</div>
-					<p>
-						The Cybersecurity Maturity Model Certification (CMMC) was created by the U.S. Department of Defense to protect Controlled Unclassified Information (CUI) handled by contractors in the Defense Industrial Base (DIB). Before CMMC, contractors were required to follow NIST SP 800-171, which outlines 110 cybersecurity controls. 
-					</p>
-					<p>
-						Compliance was self-attested, meaning companies could claim they met requirements without verification. Over time, repeated data breaches showed that this approach was ineffective. CUI continued to be lost or stolen due to weak or inconsistent controls. To address this, the DoD introduced CMMC to ensure all contractors implement and verify strong cybersecurity practices.
-					</p>
-				</section>
-
-				<!-- Section 2 -->
-				<section class="content-section">
-					<div class="section-header">
-						<h2>Why CMMC Matters</h2>
-					</div>
-					<p>
-						CMMC ensures that every organization handling DoD information protects it to a verified standard. Certification is now a requirement for winning certain contracts, which makes it a business necessity rather than a technical option. The model helps organizations identify and close security gaps, strengthen internal processes, and demonstrate accountability to government partners.
-					</p>
-					<ul class="content-list">
-						<li>Identifies and corrects cybersecurity weaknesses</li>
-						<li>Encourages consistent, repeatable practices</li>
-						<li>Builds trust throughout the defense supply chain</li>
+				<!-- Right-side Lesson Navigation -->
+				<aside class="lesson-nav">
+					<h3>Lesson 1 Navigation</h3>
+					<ul>
+						<li><a href="topic1A.html" class="active">1A: CMMC Foundations</a></li>
+						<li><a href="topic1B.html">1B: DFARS, FAR, and NIST SP 800-171</a></li>
+						<li><a href="topic1C.html">1C: CMMC Roles and Assessment Process</a></li>
+						<li><a href="flashcards1A.html">Flashcards Review</a></li>
 					</ul>
-				</section>
-
-				<!-- Section 3 -->
-				<section class="content-section">
-					<div class="section-header">
-						<h2>The Evolution of the Model</h2>
-					</div>
-					<p>
-						CMMC version 1.0 was released in 2020 and included five levels of maturity. Feedback from industry led to a refined model known as CMMC 2.0, which was released in 2021. The new version reduced complexity and aligned more closely with NIST SP 800-171. It now consists of three levels:
-					</p>
-					<ul class="content-list">
-						<li><strong>Level 1 – Foundational:</strong> Protects Federal Contract Information (FCI) with 17 basic practices. Verification is self-assessed annually.</li>
-						<li><strong>Level 2 – Advanced:</strong> Protects Controlled Unclassified Information (CUI) using 110 practices from NIST SP 800-171. Some programs require third-party assessments every three years.</li>
-						<li><strong>Level 3 – Expert:</strong> Protects against advanced persistent threats (APTs) using practices from NIST SP 800-172. Verification is performed by the government.</li>
-					</ul>
-				</section>
-
-				<!-- Section 4 -->
-				<section class="content-section">
-					<div class="section-header">
-						<h2>Practices and Processes</h2>
-					</div>
-					<p>
-						CMMC focuses on two key elements: practices and processes. Practices are specific security actions, such as enabling multi-factor authentication or encrypting data at rest. Processes describe how these practices are maintained and managed over time. Together, they ensure cybersecurity becomes part of an organization's daily operations rather than a one-time project.
-					</p>
-				</section>
-
-				<!-- Section 5 -->
-				<section class="content-section">
-					<div class="section-header">
-						<h2>Benefits Beyond Compliance</h2>
-					</div>
-					<p>
-						CMMC is not only about meeting requirements; it drives long-term resilience. Implementing CMMC practices improves protection against data breaches, enhances incident response, and aligns organizations with other frameworks such as ISO 27001 and the NIST Cybersecurity Framework. Certified companies often find that compliance boosts their reputation and competitiveness.
-					</p>
-				</section>
-
-				<!-- Section 6 - Key Takeaways -->
-				<section class="content-section key-takeaways">
-					<div class="section-header">
-						<h2>Key Takeaways</h2>
-					</div>
-					<ul class="content-list">
-						<li>CMMC was established to protect CUI and FCI across the Defense Industrial Base.</li>
-						<li>It replaces self-attestation with verified assessments.</li>
-						<li>CMMC 2.0 simplifies the model into three levels of maturity.</li>
-						<li>Certification is essential for securing and maintaining DoD contracts.</li>
-						<li>CMMC implementation strengthens overall cybersecurity and organizational culture.</li>
-					</ul>
-				</section>
-			</article>
-
-			<!-- Navigation Footer -->
-			<nav class="topic-navigation">
-				<a href="index.html" class="nav-btn back-btn">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<line x1="19" y1="12" x2="5" y2="12"></line>
-						<polyline points="12 19 5 12 12 5"></polyline>
-					</svg>
-					Back to Lesson
-				</a>
-				<button id="markComplete" class="nav-btn complete-btn">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<polyline points="20 6 9 17 4 12"></polyline>
-					</svg>
-					Mark Complete
-				</button>
-				<a href="flashcards1A.html" class="nav-btn next-btn">
-					Next: Flashcards
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<line x1="5" y1="12" x2="19" y2="12"></line>
-						<polyline points="12 5 19 12 12 19"></polyline>
-					</svg>
-				</a>
-			</nav>
+				</aside>
+			</div>
 		</main>
 	</div>
 
@@ -208,27 +210,12 @@
 			toggleBtn.addEventListener('click', () => {
 				sidebar.classList.toggle('collapsed');
 				localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
-				
-				const icon = toggleBtn.querySelector('svg');
-				icon.innerHTML = sidebar.classList.contains('collapsed') 
-					? '<polyline points="9 18 15 12 9 6"></polyline>'
-					: '<polyline points="15 18 9 12 15 6"></polyline>';
 			});
 		}
 
-		// Mark complete
-		document.getElementById('markComplete')?.addEventListener('click', () => {
-			const completed = parseInt(localStorage.getItem('lesson1_completed') || '0');
-			localStorage.setItem('lesson1_completed', Math.min(completed + 1, 3));
-			alert('Topic marked as complete! 🎉');
-			window.location.href = 'flashcards1A.html';
-		});
-
-		// Navigation
 		document.getElementById('navOverview')?.addEventListener('click', () => {
 			window.location.href = '../../dashboard.html';
 		});
-
 		document.getElementById('logoutBtn')?.addEventListener('click', () => {
 			window.location.href = '../../index.html';
 		});
