@@ -43,12 +43,9 @@
 			</div>
 		</aside>
 
-		<!-- Lucide Icons CDN -->
-		<script src="https://unpkg.com/lucide@latest"></script>
-
 		<!-- Main Content -->
 		<main class="content">
-			<!-- View: Lessons -->
+			<!-- View: Overview -->
 			<section id="lessons" class="view">
 				<header class="topbar overview-header">
 					<div class="overview-grid">
@@ -57,7 +54,7 @@
 							<p class="subtitle">Select your exam date to track remaining days.</p>
 							<div class="calendar-controls">
 								<label for="examDate">Exam Date:</label>
-								<input type="date" id="examDate">
+								<input type="date" id="examDate" />
 								<p id="daysRemaining" class="countdown-text">No date set</p>
 							</div>
 						</div>
@@ -68,7 +65,7 @@
 								<svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
 									<circle class="progress-bg" cx="18" cy="18" r="15.9155"></circle>
 									<circle class="progress-meter" cx="18" cy="18" r="15.9155"></circle>
-									<text x="18" y="20.5" class="percentage">72%</text>
+									<text x="18" y="20.5" class="percentage">0%</text>
 								</svg>
 								<p class="percent-label">Lesson & Section Completion</p>
 							</div>
@@ -90,25 +87,19 @@
 				<div class="strengths-container">
 					<div class="strength-item">
 						<h3>Lesson 1: Understanding CMMC</h3>
-						<div class="strength-bar">
-							<div class="strength-fill proficient"></div>
-						</div>
+						<div class="strength-bar"><div class="strength-fill proficient"></div></div>
 						<p class="level">Proficient</p>
 					</div>
 
 					<div class="strength-item">
 						<h3>Lesson 2: NIST SP 800-171 Overview</h3>
-						<div class="strength-bar">
-							<div class="strength-fill intermediate"></div>
-						</div>
+						<div class="strength-bar"><div class="strength-fill intermediate"></div></div>
 						<p class="level">Intermediate</p>
 					</div>
 
 					<div class="strength-item">
 						<h3>Lesson 3: Assessment Readiness</h3>
-						<div class="strength-bar">
-							<div class="strength-fill beginner"></div>
-						</div>
+						<div class="strength-bar"><div class="strength-fill beginner"></div></div>
 						<p class="level">Beginner</p>
 					</div>
 				</div>
@@ -138,7 +129,10 @@
 		</main>
 	</div>
 
-	<!-- Firebase + Navigation -->
+	<!-- Lucide Icons CDN (MUST BE ABOVE MODULE SCRIPT) -->
+	<script src="https://unpkg.com/lucide@latest"></script>
+
+	<!-- Firebase + Logic -->
 	<script type="module">
 		import { lessons } from "./js/lessons.js";
 		import { requireAuth, getUser, logout } from "./js/firebase.js";
@@ -146,28 +140,29 @@
 		// --- Firebase Auth ---
 		requireAuth();
 		getUser((user) => {
-			if (user) document.getElementById("userEmail").textContent = user.email;
+			if (user) console.log("User:", user.email);
 		});
 		document.getElementById("logoutBtn").addEventListener("click", logout);
 
 		// --- Render Lessons Dynamically ---
 		const cardsContainer = document.querySelector(".cards");
-		lessons.forEach((lesson) => {
-			const card = document.createElement("div");
-			card.classList.add("lesson-card");
-			card.innerHTML = `
-				<h3>Lesson ${lesson.id}: ${lesson.title}</h3>
-				<p>${lesson.focus}</p>
-				<button class="primary" data-lesson-id="${lesson.id}">Start Lesson</button>
-			`;
-			
-			const button = card.querySelector("button");
-			button.addEventListener("click", () => {
-				window.location.href = \`lesson${lesson.id}.html\`;
+		if (lessons && lessons.length > 0) {
+			lessons.forEach((lesson) => {
+				const card = document.createElement("div");
+				card.classList.add("lesson-card");
+				card.innerHTML = `
+					<h3>Lesson ${lesson.id}: ${lesson.title}</h3>
+					<p>${lesson.focus}</p>
+					<button class="primary" data-lesson-id="${lesson.id}">Start Lesson</button>
+				`;
+				card.querySelector("button").addEventListener("click", () => {
+					window.location.href = \`lesson${lesson.id}.html\`;
+				});
+				cardsContainer.appendChild(card);
 			});
-			
-			cardsContainer.appendChild(card);
-		});
+		} else {
+			cardsContainer.innerHTML = "<p>No lessons found. Check your lessons.js file.</p>";
+		}
 
 		// --- Sidebar Navigation ---
 		const views = {
@@ -225,11 +220,11 @@
 				daysRemainingEl.textContent = \`\${diffDays} day\${diffDays !== 1 ? "s" : ""} until exam\`;
 			}
 		}
-		
-		// --- Lesson Completion Progress ---
+
+		// --- Progress Circle ---
 		function calculateLessonProgress() {
 			const totalLessons = lessons.length;
-			const completedLessons = 10; 
+			const completedLessons = 10;
 			const percent = Math.round((completedLessons / totalLessons) * 100);
 			updateProgressCircle(percent);
 		}
@@ -250,16 +245,13 @@
 		toggleSidebar.addEventListener("click", () => {
 			sidebar.classList.toggle("collapsed");
 			const icon = toggleSidebar.querySelector("i");
-			icon.setAttribute(
-				"data-lucide",
-				sidebar.classList.contains("collapsed") ? "chevron-right" : "chevron-left"
-			);
+			icon.setAttribute("data-lucide", sidebar.classList.contains("collapsed") ? "chevron-right" : "chevron-left");
 			lucide.createIcons({
 				attrs: { width: "22", height: "22", stroke: "currentColor", "stroke-width": 1.75 }
 			});
 		});
 
-		// Initialize icons after everything renders
+		// --- Initialize Lucide Icons ---
 		lucide.createIcons({
 			attrs: { width: "22", height: "22", stroke: "currentColor", "stroke-width": 1.75 }
 		});
