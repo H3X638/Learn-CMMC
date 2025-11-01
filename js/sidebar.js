@@ -20,6 +20,56 @@ function initializeSidebar() {
 	document.body.classList.add('loaded');
 }
 
+import { lessons } from "./lessons.js";
+
+function populateLessonsInSidebar() {
+	const sidebarNav = document.querySelector("nav ul");
+	if (!sidebarNav) return;
+
+	lessons.forEach((lesson) => {
+		// Create parent lesson item
+		const lessonItem = document.createElement("li");
+		lessonItem.classList.add("lesson-item");
+		lessonItem.innerHTML = `
+			<div class="lesson-header">
+				<span>${lesson.title}</span>
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" 
+					stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="6 9 12 15 18 9"></polyline>
+				</svg>
+			</div>
+			<ul class="topic-list hidden"></ul>
+		`;
+
+		const topicList = lessonItem.querySelector(".topic-list");
+
+		// Add topics under lesson
+		lesson.topics?.forEach((topic) => {
+			const topicItem = document.createElement("li");
+			topicItem.classList.add("topic-link");
+			topicItem.innerHTML = `<a href="${lesson.folder}/${topic.file}">${topic.title}</a>`;
+			topicList.appendChild(topicItem);
+		});
+
+		// Expand/collapse behavior
+		lessonItem.querySelector(".lesson-header").addEventListener("click", () => {
+			topicList.classList.toggle("hidden");
+			const icon = lessonItem.querySelector("svg");
+			icon.innerHTML = topicList.classList.contains("hidden")
+				? '<polyline points="6 9 12 15 18 9"></polyline>'
+				: '<polyline points="18 15 12 9 6 15"></polyline>';
+		});
+
+		sidebarNav.appendChild(lessonItem);
+	});
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	initializeSidebar();
+	populateLessonsInSidebar();
+});
+
+
 // Highlight the current page in sidebar
 function setActivePage() {
 	const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
