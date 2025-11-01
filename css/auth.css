@@ -58,7 +58,11 @@ body::before {
 	width: 100%;
 	max-width: 440px;
 	position: relative;
-	max-height: 90vh;
+	
+	max-height: 85vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .auth-card::before {
