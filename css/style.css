@@ -541,6 +541,27 @@ button.google:hover {
 	margin: 0;
 }
 
+/* --- Sidebar Collapsed State Fixes --- */
+.sidebar.collapsed .logout-section {
+	padding: 0;
+	text-align: center;
+}
+
+.sidebar.collapsed .logout-section button {
+	justify-content: center;
+	width: 50px;
+	padding: 0.5rem;
+}
+
+.sidebar.collapsed .logout-section span {
+	display: none;
+}
+
+.sidebar.collapsed .logout-section i {
+	margin: 0;
+}
+
+
 /* --- Circular Progress (Lesson Completion) --- */
 .progress-overview {
 	text-align: center;

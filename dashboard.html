@@ -18,9 +18,10 @@
 				<i data-lucide="chevron-left"></i>
 			</button>
 		</div>
+
 		<nav>
 			<ul>
-				<li id="navLessons" class="active">
+				<li id="navOverview" class="active">
 					<i data-lucide="book-open"></i>
 					<span>Learning Overview</span>
 				</li>
@@ -34,13 +35,13 @@
 				</li>
 			</ul>
 		</nav>
+
 		<div class="logout-section">
 			<button id="logoutBtn" class="secondary">
-				<i data-lucide="log-out"></i> Logout
+				<i data-lucide="log-out"></i> <span>Logout</span>
 			</button>
 		</div>
 	</aside>
-
 
 	<!-- Lucide Icons CDN -->
 	<script src="https://unpkg.com/lucide@latest"></script>
@@ -167,13 +168,13 @@
 
 		// --- Sidebar Navigation ---
 		const views = {
-			lessons: document.getElementById("lessons"),
+			overview: document.getElementById("lessons"), // renamed for clarity
 			strengths: document.getElementById("strengths"),
 			practice: document.getElementById("practice"),
 		};
 
 		const navItems = {
-			lessons: document.getElementById("navLessons"),
+			overview: document.getElementById("navOverview"),
 			strengths: document.getElementById("navStrengths"),
 			practice: document.getElementById("navPractice"),
 		};
@@ -185,10 +186,10 @@
 			navItems[viewName].classList.add("active");
 		}
 
-		navItems.lessons.addEventListener("click", () => showView("lessons"));
+		navItems.overview.addEventListener("click", () => showView("overview"));
 		navItems.strengths.addEventListener("click", () => showView("strengths"));
 		navItems.practice.addEventListener("click", () => showView("practice"));
-		
+
 		// --- Exam Countdown ---
 		const examDateInput = document.getElementById("examDate");
 		const daysRemainingEl = document.getElementById("daysRemaining");
