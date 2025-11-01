@@ -11,19 +11,33 @@
 <body>
 	<div class="app-container">
 		<!-- Sidebar -->
-		<aside class="sidebar">
-			<h2 class="logo">CMMC Portal</h2>
-			<nav>
-				<ul>
-					<li id="navLessons" class="active">Lessons</li>
-					<li id="navStrengths">Strengths</li>
-					<li id="navPractice">Practice</li>
-				</ul>
-			</nav>
-			<div class="logout-section">
-				<button id="logoutBtn" class="secondary">Logout</button>
-			</div>
-		</aside>
+	<aside class="sidebar">
+		<h2 class="logo">CMMC Portal</h2>
+		<nav>
+			<ul>
+				<li id="navLessons" class="active">
+					<i data-lucide="book-open"></i>
+					<span>Lessons</span>
+				</li>
+				<li id="navStrengths">
+					<i data-lucide="bar-chart-3"></i>
+					<span>Strengths</span>
+				</li>
+				<li id="navPractice">
+					<i data-lucide="target"></i>
+					<span>Practice</span>
+				</li>
+			</ul>
+		</nav>
+		<div class="logout-section">
+			<button id="logoutBtn" class="secondary">
+				<i data-lucide="log-out"></i> Logout
+			</button>
+		</div>
+	</aside>
+
+	<!-- Lucide Icons CDN -->
+	<script src="https://unpkg.com/lucide@latest"></script>
 
 		<!-- Main Content -->
 		<main class="content">
@@ -158,6 +172,9 @@
 		navItems.lessons.addEventListener("click", () => showView("lessons"));
 		navItems.strengths.addEventListener("click", () => showView("strengths"));
 		navItems.practice.addEventListener("click", () => showView("practice"));
+		
+		// Initialize icons after everything renders
+		lucide.createIcons();
 	</script>
 </body>
 </html>
