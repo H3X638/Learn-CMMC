@@ -184,22 +184,61 @@
 		</main>
 	</div>
 
-	<script type="module">
-		import "../../js/sidebar.js"; // Handles sidebar behavior
-		import { requireAuth } from "../../js/firebase.js";
+	<script>
+		console.log("Script loaded!");
 
-		requireAuth();
+		// Basic sidebar toggle without imports
+		const sidebar = document.querySelector('.sidebar');
+		const toggleBtn = document.getElementById('toggleSidebar');
+		
+		if (toggleBtn) {
+			const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+			if (isCollapsed) {
+				sidebar.classList.add('collapsed');
+			}
+			
+			toggleBtn.addEventListener('click', () => {
+				sidebar.classList.toggle('collapsed');
+				const collapsed = sidebar.classList.contains('collapsed');
+				localStorage.setItem('sidebarCollapsed', collapsed);
+				
+				const icon = toggleBtn.querySelector('svg');
+				if (collapsed) {
+					icon.innerHTML = '<polyline points="9 18 15 12 9 6"></polyline>';
+				} else {
+					icon.innerHTML = '<polyline points="15 18 9 12 15 6"></polyline>';
+				}
+			});
+		}
 
 		// Calculate lesson progress
 		const completedTopics = parseInt(localStorage.getItem('lesson1_completed') || '0');
 		const totalTopics = 3;
 		const progressPercent = (completedTopics / totalTopics) * 100;
-		document.getElementById('lessonProgress').style.width = `${progressPercent}%`;
+		const progressBar = document.getElementById('lessonProgress');
+		if (progressBar) {
+			progressBar.style.width = `${progressPercent}%`;
+		}
 
-		// Make sidebar nav clickable to go to dashboard
-		document.getElementById('navOverview').addEventListener('click', () => {
-			window.location.href = '../../dashboard.html';
-		});
+		// Make sidebar nav clickable
+		const navOverview = document.getElementById('navOverview');
+		if (navOverview) {
+			navOverview.addEventListener('click', () => {
+				window.location.href = '../../dashboard.html';
+			});
+		}
+
+		// Logout button
+		const logoutBtn = document.getElementById('logoutBtn');
+		if (logoutBtn) {
+			logoutBtn.addEventListener('click', () => {
+				window.location.href = '../../index.html';
+			});
+		}
+
+		// Add loaded class
+		document.body.classList.add('loaded');
+		console.log("Page initialized successfully!");
 	</script>
 </body>
 </html>
