@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 1A Flashcards – CMMC Levels</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css" />
+  <style>
+    body {
+      background: var(--bg);
+      font-family: "Open Sans", sans-serif;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: "Poppins", sans-serif;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .flashcard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      justify-items: center;
+    }
+
+    .flashcard {
+      width: 100%;
+      max-width: 300px;
+      height: 180px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .flashcard-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flashcard.flip .flashcard-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-front,
+    .flashcard-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      background: white;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .flashcard-front {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .flashcard-back {
+      transform: rotateY(180deg);
+      background: var(--accent);
+      color: white;
+      font-weight: 500;
+    }
+
+    .continue-btn {
+      margin-top: 2rem;
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .continue-btn:hover {
+      background: #123d62;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Lesson 1A Flashcards: CMMC Levels</h1>
+    <p class="subtitle">Click each card to reveal the answer.</p>
+
+    <div class="flashcard-grid">
+      <div class="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">What is the focus of CMMC Level 1?</div>
+          <div class="flashcard-back">Protects Federal Contract Information (FCI) with 17 basic FAR practices. Self-assessed annually.</div>
+        </div>
+      </div>
+
+      <div class="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">Which level aligns with NIST SP 800-171?</div>
+          <div class="flashcard-back">Level 2 – Protects CUI with 110 controls. May require third-party assessment.</div>
+        </div>
+      </div>
+
+      <div class="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">What distinguishes Level 3 from lower levels?</div>
+          <div class="flashcard-back">Government-verified, based on NIST SP 800-172, for advanced persistent threat protection.</div>
+        </div>
+      </div>
+
+      <div class="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">Key difference between Levels 1, 2, and 3?</div>
+          <div class="flashcard-back">Level 1: FCI / Level 2: CUI / Level 3: High-value CUI.</div>
+        </div>
+      </div>
+
+      <div class="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">Why are CMMC Levels important?</div>
+          <div class="flashcard-back">They align security maturity with data sensitivity, protecting the defense supply chain.</div>
+        </div>
+      </div>
+    </div>
+
+    <a href="topic1B.html" class="continue-btn">Continue to Topic 1B</a>
+  </main>
+
+  <script>
+    const flashcards = document.querySelectorAll('.flashcard');
+    flashcards.forEach(card => {
+      card.addEventListener('click', () => card.classList.toggle('flip'));
+    });
+  </script>
+</body>
+</html>
