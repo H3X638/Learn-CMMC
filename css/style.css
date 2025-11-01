@@ -443,3 +443,96 @@ button.secondary:hover {
 
 .strength-fill.proficient { 
 	width:
+	
+/* --- Authentication Page --- */
+.auth-body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background: var(--bg);
+	font-family: "Open Sans", sans-serif;
+}
+
+.auth-container {
+	text-align: center;
+}
+
+.auth-title {
+	font-family: "Poppins", sans-serif;
+	color: var(--primary);
+	font-size: 2rem;
+	margin-bottom: 2rem;
+}
+
+.auth-box {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: space-between;
+	background: #fff;
+	padding: 2rem 3rem;
+	border-radius: var(--radius);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+	gap: 2rem;
+	min-width: 650px;
+}
+
+.auth-section {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.auth-section h2 {
+	font-family: "Poppins", sans-serif;
+	color: var(--primary);
+	margin-bottom: 0.5rem;
+}
+
+.auth-subtext {
+	color: var(--text-light);
+	font-size: 0.9rem;
+	margin-bottom: 0.5rem;
+}
+
+.auth-section input {
+	width: 100%;
+	padding: 0.75rem;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	font-size: 1rem;
+}
+
+.auth-section button {
+	width: 100%;
+	padding: 0.75rem;
+	font-size: 1rem;
+	margin-top: 0.5rem;
+	border-radius: var(--radius);
+	cursor: pointer;
+}
+
+.auth-section button.google {
+	background: #4285f4;
+	color: #fff;
+	border: none;
+}
+
+.auth-section button.google:hover {
+	opacity: 0.9;
+}
+
+.auth-divider {
+	width: 1px;
+	background: #e5e7eb;
+	margin: 0 1rem;
+}
+
+.divider {
+	margin: 0.75rem 0;
+	color: var(--text-light);
+	font-size: 0.9rem;
+}
