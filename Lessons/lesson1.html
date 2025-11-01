@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Lesson 1 – Understanding the CMMC Ecosystem</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+	<div class="app-container">
+		<aside class="sidebar">
+			<div class="sidebar-header">
+				<h2 class="logo">CMMC Portal</h2>
+				<button id="toggleSidebar" class="sidebar-toggle">
+					<i data-lucide="chevron-left"></i>
+				</button>
+			</div>
+
+			<nav>
+				<ul>
+					<li onclick="window.location.href='../dashboard.html'">
+						<i data-lucide="home"></i>
+						<span>Dashboard</span>
+					</li>
+					<li class="active">
+						<i data-lucide="book-open"></i>
+						<span>Lesson 1 Overview</span>
+					</li>
+				</ul>
+			</nav>
+
+			<div class="logout-section">
+				<button id="logoutBtn" class="secondary">
+					<i data-lucide="log-out"></i>
+					<span>Logout</span>
+				</button>
+			</div>
+		</aside>
+
+		<main class="content">
+			<header class="topbar">
+				<h1>Lesson 1: Understanding the CMMC Ecosystem</h1>
+				<p class="subtitle">Explore DFARS, FAR, model structure, key roles, and the CMMC assessment lifecycle.</p>
+			</header>
+
+			<div class="lesson-details">
+				<p><strong>Total Tasks:</strong> 5 &nbsp; | &nbsp; <strong>Knowledge Points:</strong> 100 &nbsp; | &nbsp; <strong>Estimated Time:</strong> ~90 Minutes</p>
+			</div>
+
+			<div class="cards">
+				<div class="lesson-card" onclick="window.location.href='lesson1a.html'">
+					<h3>Topic 1A: Understanding DFARS and FAR</h3>
+					<p>Learn the regulatory origins of CMMC and the difference between DFARS and FAR clauses.</p>
+					<p class="meta">15 Knowledge Points | 15–30 Minutes</p>
+				</div>
+
+				<div class="lesson-card" onclick="window.location.href='lesson1b.html'">
+					<h3>Topic 1B: The CMMC Model Structure</h3>
+					<p>Understand how CMMC levels and practices align with NIST 800-171 and federal requirements.</p>
+					<p class="meta">20 Knowledge Points | 20–30 Minutes</p>
+				</div>
+
+				<div class="lesson-card" onclick="window.location.href='lesson1c.html'">
+					<h3>Topic 1C: Key Roles in the CMMC Ecosystem</h3>
+					<p>Discover how C3PAOs, CCPs, OSCs, and DIBCAC each play a role in certification and readiness.</p>
+					<p class="meta">20 Knowledge Points | 15–30 Minutes</p>
+				</div>
+
+				<div class="lesson-card" onclick="window.location.href='lesson1d.html'">
+					<h3>Topic 1D: The CMMC Assessment Lifecycle</h3>
+					<p>Follow the process from readiness to assessment, certification, and recertification.</p>
+					<p class="meta">25 Knowledge Points | 20–30 Minutes</p>
+				</div>
+
+				<div class="lesson-card" onclick="window.location.href='lesson1e.html'">
+					<h3>Topic 1E: CMMC in the Broader Compliance Landscape</h3>
+					<p>See how CMMC connects to FedRAMP, FISMA, and other frameworks for unified compliance.</p>
+					<p class="meta">15 Knowledge Points | 15–30 Minutes</p>
+				</div>
+
+				<div class="lesson-card" onclick="window.location.href='lesson1review.html'">
+					<h3>Lesson 1 Review Assessment</h3>
+					<p>Test your understanding of Lesson 1 topics with a short multiple-choice assessment.</p>
+					<p class="meta">10 Questions | ~15 Minutes</p>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<script src="https://unpkg.com/lucide@latest"></script>
+	<script type="module">
+		import { logout } from "../js/firebase.js";
+		document.getElementById("logoutBtn").addEventListener("click", logout);
+		lucide.createIcons();
+	</script>
+</body>
+</html>
