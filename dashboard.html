@@ -92,7 +92,7 @@
 				</header>
 
 				<h2 class="section-title">Available Lessons</h2>
-				<div class="cards"></div>
+				<div id="lessonsAccordion" class="lessons-accordion"></div>
 			</section>
 
 			<!-- View: Strengths -->
@@ -149,37 +149,107 @@
 
 	<!-- Scripts -->
 	<script type="module">
-		import "./js/sidebar.js"; // Handles all sidebar behavior
+		import "./js/sidebar.js";
 		import { lessons } from "./js/lessons.js";
 		import { requireAuth, getUser } from "./js/firebase.js";
 
-		// --- Firebase Auth ---
 		requireAuth();
 		getUser((user) => {
 			if (user) console.log("User:", user.email);
 		});
 
-		// --- Render Lessons Dynamically ---
-		const cardsContainer = document.querySelector(".cards");
+		// --- Render Collapsible Lessons ---
+		const accordionContainer = document.getElementById('lessonsAccordion');
+		
 		if (lessons && lessons.length > 0) {
-			lessons.forEach((lesson) => {
-				const card = document.createElement("div");
-				card.classList.add("lesson-card");
-				card.innerHTML = `
-					<h3>Lesson ${lesson.id}: ${lesson.title}</h3>
-					<p>${lesson.focus}</p>
-					<button class="primary" data-lesson-id="${lesson.id}">Start Lesson</button>
+			lessons.forEach((lesson, index) => {
+				const lessonItem = document.createElement('div');
+				lessonItem.classList.add('lesson-accordion-item');
+				
+				// Create lesson header
+				const lessonHeader = document.createElement('div');
+				lessonHeader.classList.add('lesson-accordion-header');
+				lessonHeader.innerHTML = `
+					<div class="lesson-header-left">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<rect x="3" y="3" width="7" height="7"></rect>
+							<rect x="14" y="3" width="7" height="7"></rect>
+							<rect x="14" y="14" width="7" height="7"></rect>
+							<rect x="3" y="14" width="7" height="7"></rect>
+						</svg>
+						<div class="lesson-info">
+							<h3>Lesson ${lesson.id}: ${lesson.title}</h3>
+							<p class="lesson-stats">${lesson.topics?.length || 3} Tasks | ${lesson.points || 37} Knowledge Points</p>
+						</div>
+					</div>
+					<svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="6 9 12 15 18 9"></polyline>
+					</svg>
 				`;
-				card.querySelector("button").addEventListener("click", () => {
-					window.location.href = `Lessons/lesson${lesson.id}/index.html`;
+				
+				// Create lesson content (topics)
+				const lessonContent = document.createElement('div');
+				lessonContent.classList.add('lesson-accordion-content');
+				
+				// Generate topics (placeholder for now)
+				const topics = lesson.topics || [
+					{ id: 'A', title: `${lesson.title} - Part A`, points: 10, duration: '15-30 Minutes' },
+					{ id: 'B', title: `${lesson.title} - Part B`, points: 12, duration: '15-30 Minutes' },
+					{ id: 'C', title: `${lesson.title} - Part C`, points: 15, duration: '15-30 Minutes' }
+				];
+				
+				topics.forEach(topic => {
+					const topicItem = document.createElement('div');
+					topicItem.classList.add('topic-item');
+					topicItem.innerHTML = `
+						<div class="topic-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+								<path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+							</svg>
+						</div>
+						<div class="topic-details">
+							<h4>Topic ${lesson.id}${topic.id}: ${topic.title}</h4>
+							<p class="topic-meta">${topic.points} Knowledge Points | ${topic.duration}</p>
+						</div>
+					`;
+					
+					topicItem.addEventListener('click', () => {
+						window.location.href = `Lessons/lesson${lesson.id}/topic${lesson.id}${topic.id}.html`;
+					});
+					
+					lessonContent.appendChild(topicItem);
 				});
-				cardsContainer.appendChild(card);
+				
+				// Add toggle functionality
+				lessonHeader.addEventListener('click', () => {
+					const isOpen = lessonItem.classList.contains('open');
+					
+					// Close all others
+					document.querySelectorAll('.lesson-accordion-item').forEach(item => {
+						item.classList.remove('open');
+					});
+					
+					// Toggle current
+					if (!isOpen) {
+						lessonItem.classList.add('open');
+					}
+				});
+				
+				lessonItem.appendChild(lessonHeader);
+				lessonItem.appendChild(lessonContent);
+				accordionContainer.appendChild(lessonItem);
+				
+				// Open first lesson by default
+				if (index === 0) {
+					lessonItem.classList.add('open');
+				}
 			});
 		} else {
-			cardsContainer.innerHTML = "<p>No lessons found. Check your lessons.js file.</p>";
+			accordionContainer.innerHTML = "<p>No lessons found. Check your lessons.js file.</p>";
 		}
 
-		// --- Sidebar Navigation (Dashboard-specific view switching) ---
+		// --- Sidebar Navigation ---
 		const views = {
 			overview: document.getElementById("lessons"),
 			strengths: document.getElementById("strengths"),
