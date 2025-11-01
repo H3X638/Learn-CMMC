@@ -442,185 +442,59 @@ button.secondary:hover {
 }
 
 .strength-fill.proficient { 
-	width:
-	
-/* --- Modern Auth Page --- */
-.auth-modern {
-	background: url("https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1950&q=80") center/cover no-repeat;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: "Open Sans", sans-serif;
+	width: 90%; 
+	background: #27ae60; 
 }
 
-.auth-wrapper {
-	backdrop-filter: blur(6px);
-	background: rgba(12, 45, 72, 0.65);
-	padding: 2rem;
-	border-radius: 20px;
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-	width: 360px;
-	text-align: center;
-	color: #fff;
+.level {
+	font-weight: 600;
+	color: var(--text-light);
+	font-size: 0.9rem;
 }
 
-.auth-heading {
-	font-family: "Poppins", sans-serif;
-	font-size: 1.5rem;
-	margin-bottom: 0.25rem;
+/* --- Practice Section --- */
+.practice-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 2rem;
+	margin-top: 2rem;
 }
 
-.auth-subtitle {
-	font-size: 0.95rem;
-	color: #d0d4d8;
-	margin-bottom: 1rem;
-}
-
-/* Tabs */
-.auth-tabs {
-	display: flex;
-	justify-content: space-around;
-	margin-bottom: 1rem;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.auth-tabs button {
-	flex: 1;
-	background: transparent;
-	color: #d0d4d8;
-	border: none;
-	padding: 0.5rem;
-	font-size: 1rem;
-	cursor: pointer;
-	font-family: "Poppins", sans-serif;
-	transition: all 0.3s ease;
-}
-
-.auth-tabs button.active {
-	color: var(--accent);
-	border-bottom: 2px solid var(--accent);
-}
-
-/* Form */
-.auth-form {
-	display: none;
-	flex-direction: column;
-	gap: 0.75rem;
-}
-
-.auth-form.active {
-	display: flex;
-}
-
-.auth-form input {
-	padding: 0.75rem;
-	border-radius: 10px;
-	border: none;
-	background: rgba(255, 255, 255, 0.1);
-	color: #fff;
-	font-size: 1rem;
-}
-
-.auth-form input::placeholder {
-	color: #b5b8bc;
-}
-
-.password-field {
-	position: relative;
-}
-
-.show-toggle {
-	position: absolute;
-	right: 10px;
-	top: 50%;
-	transform: translateY(-50%);
-	font-size: 0.85rem;
-	color: var(--accent);
-	cursor: pointer;
-}
-
-.forgot-link {
-	font-size: 0.85rem;
-	color: var(--accent);
-	text-decoration: none;
-	margin-top: 0.25rem;
-	align-self: flex-end;
-}
-
-.forgot-link:hover {
-	text-decoration: underline;
-}
-
-/* Buttons */
-button.full {
-	width: 100%;
+.practice-card {
+	background: white;
 	border-radius: 12px;
-	padding: 0.9rem;
-	font-size: 1rem;
-	cursor: pointer;
-}
-
-button.primary {
-	background: var(--accent);
-	color: #fff;
-	border: none;
-	font-weight: 600;
-	transition: background 0.3s ease;
-}
-
-button.primary:hover {
-	background: #2499a6;
-}
-
-button.secondary {
-	border: 2px solid var(--accent);
-	color: var(--accent);
-	background: transparent;
-	font-weight: 600;
-}
-
-button.secondary:hover {
-	background: var(--accent);
-	color: #fff;
-}
-
-button.google {
-	background: #fff;
-	color: #444;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+	padding: 1.5rem;
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.5rem;
-	border: none;
-	font-weight: 500;
+	flex-direction: column;
+	justify-content: space-between;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-button.google img {
-	width: 18px;
-	height: 18px;
+.practice-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer */
-.auth-footer {
-	margin-top: 1rem;
-	font-size: 0.75rem;
-	color: #b5b8bc;
+.practice-card h3 {
+	font-family: "Poppins", sans-serif;
+	color: var(--primary);
+	margin-top: 0;
 }
 
-.auth-footer a {
-	color: var(--accent);
-	text-decoration: none;
+.practice-card p {
+	color: var(--text-light);
+	line-height: 1.5;
+	margin-bottom: 1rem;
 }
 
-.auth-footer a:hover {
-	text-decoration: underline;
-}
-
-/* Responsive */
-@media (max-width: 450px) {
-	.auth-wrapper {
-		width: 90%;
+/* --- Responsive --- */
+@media (max-width: 900px) {
+	.overview-grid {
+		flex-direction: column;
+	}
+	
+	.content {
 		padding: 1.5rem;
 	}
 }
