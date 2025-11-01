@@ -444,95 +444,183 @@ button.secondary:hover {
 .strength-fill.proficient { 
 	width:
 	
-/* --- Authentication Page --- */
-.auth-body {
+/* --- Modern Auth Page --- */
+.auth-modern {
+	background: url("https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1950&q=80") center/cover no-repeat;
+	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
-	background: var(--bg);
 	font-family: "Open Sans", sans-serif;
 }
 
-.auth-container {
+.auth-wrapper {
+	backdrop-filter: blur(6px);
+	background: rgba(12, 45, 72, 0.65);
+	padding: 2rem;
+	border-radius: 20px;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+	width: 360px;
 	text-align: center;
+	color: #fff;
 }
 
-.auth-title {
+.auth-heading {
 	font-family: "Poppins", sans-serif;
-	color: var(--primary);
-	font-size: 2rem;
-	margin-bottom: 2rem;
+	font-size: 1.5rem;
+	margin-bottom: 0.25rem;
 }
 
-.auth-box {
+.auth-subtitle {
+	font-size: 0.95rem;
+	color: #d0d4d8;
+	margin-bottom: 1rem;
+}
+
+/* Tabs */
+.auth-tabs {
 	display: flex;
-	flex-direction: row;
-	align-items: stretch;
-	justify-content: space-between;
-	background: #fff;
-	padding: 2rem 3rem;
-	border-radius: var(--radius);
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-	gap: 2rem;
-	min-width: 650px;
+	justify-content: space-around;
+	margin-bottom: 1rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.auth-section {
+.auth-tabs button {
 	flex: 1;
-	display: flex;
+	background: transparent;
+	color: #d0d4d8;
+	border: none;
+	padding: 0.5rem;
+	font-size: 1rem;
+	cursor: pointer;
+	font-family: "Poppins", sans-serif;
+	transition: all 0.3s ease;
+}
+
+.auth-tabs button.active {
+	color: var(--accent);
+	border-bottom: 2px solid var(--accent);
+}
+
+/* Form */
+.auth-form {
+	display: none;
 	flex-direction: column;
-	align-items: center;
 	gap: 0.75rem;
 }
 
-.auth-section h2 {
-	font-family: "Poppins", sans-serif;
-	color: var(--primary);
-	margin-bottom: 0.5rem;
+.auth-form.active {
+	display: flex;
 }
 
-.auth-subtext {
-	color: var(--text-light);
-	font-size: 0.9rem;
-	margin-bottom: 0.5rem;
-}
-
-.auth-section input {
-	width: 100%;
+.auth-form input {
 	padding: 0.75rem;
-	border-radius: 6px;
-	border: 1px solid #ccc;
+	border-radius: 10px;
+	border: none;
+	background: rgba(255, 255, 255, 0.1);
+	color: #fff;
 	font-size: 1rem;
 }
 
-.auth-section button {
-	width: 100%;
-	padding: 0.75rem;
-	font-size: 1rem;
-	margin-top: 0.5rem;
-	border-radius: var(--radius);
+.auth-form input::placeholder {
+	color: #b5b8bc;
+}
+
+.password-field {
+	position: relative;
+}
+
+.show-toggle {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 0.85rem;
+	color: var(--accent);
 	cursor: pointer;
 }
 
-.auth-section button.google {
-	background: #4285f4;
+.forgot-link {
+	font-size: 0.85rem;
+	color: var(--accent);
+	text-decoration: none;
+	margin-top: 0.25rem;
+	align-self: flex-end;
+}
+
+.forgot-link:hover {
+	text-decoration: underline;
+}
+
+/* Buttons */
+button.full {
+	width: 100%;
+	border-radius: 12px;
+	padding: 0.9rem;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+button.primary {
+	background: var(--accent);
 	color: #fff;
 	border: none;
+	font-weight: 600;
+	transition: background 0.3s ease;
 }
 
-.auth-section button.google:hover {
-	opacity: 0.9;
+button.primary:hover {
+	background: #2499a6;
 }
 
-.auth-divider {
-	width: 1px;
-	background: #e5e7eb;
-	margin: 0 1rem;
+button.secondary {
+	border: 2px solid var(--accent);
+	color: var(--accent);
+	background: transparent;
+	font-weight: 600;
 }
 
-.divider {
-	margin: 0.75rem 0;
-	color: var(--text-light);
-	font-size: 0.9rem;
+button.secondary:hover {
+	background: var(--accent);
+	color: #fff;
+}
+
+button.google {
+	background: #fff;
+	color: #444;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	border: none;
+	font-weight: 500;
+}
+
+button.google img {
+	width: 18px;
+	height: 18px;
+}
+
+/* Footer */
+.auth-footer {
+	margin-top: 1rem;
+	font-size: 0.75rem;
+	color: #b5b8bc;
+}
+
+.auth-footer a {
+	color: var(--accent);
+	text-decoration: none;
+}
+
+.auth-footer a:hover {
+	text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 450px) {
+	.auth-wrapper {
+		width: 90%;
+		padding: 1.5rem;
+	}
 }
