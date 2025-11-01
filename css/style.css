@@ -441,3 +441,48 @@ button.google:hover {
 .sidebar li:hover i {
 	color: var(--accent);
 }
+
+/* --- Exam Countdown --- */
+.exam-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2rem;
+	flex-wrap: wrap;
+}
+
+.exam-countdown {
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+	padding: 1.5rem;
+	width: 340px;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.calendar-controls {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.calendar-controls label {
+	font-weight: 600;
+	color: var(--primary);
+	font-family: "Poppins", sans-serif;
+}
+
+.calendar-controls input[type="date"] {
+	padding: 0.5rem;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	font-size: 1rem;
+}
+
+.countdown-text {
+	margin-top: 0.25rem;
+	font-weight: 500;
+	color: var(--text-light);
+}

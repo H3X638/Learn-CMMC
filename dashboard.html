@@ -17,7 +17,7 @@
 			<ul>
 				<li id="navLessons" class="active">
 					<i data-lucide="book-open"></i>
-					<span>Lessons</span>
+					<span>Learning Overview</span>
 				</li>
 				<li id="navStrengths">
 					<i data-lucide="bar-chart-3"></i>
@@ -43,16 +43,21 @@
 		<main class="content">
 			<!-- View: Lessons -->
 			<section id="lessons" class="view">
-				<header class="topbar">
-					<div>
-						<h1>Welcome, <span id="userEmail"></span></h1>
-						<p class="subtitle">Your CMMC Learning Dashboard</p>
+				<header class="topbar exam-header">
+					<div class="exam-countdown">
+						<h1>Exam Countdown</h1>
+						<p class="subtitle">Select your exam date to track remaining days.</p>
+
+						<div class="calendar-controls">
+							<label for="examDate">Exam Date:</label>
+							<input type="date" id="examDate">
+							<p id="daysRemaining" class="countdown-text">No date set</p>
+						</div>
 					</div>
+
 					<div class="progress-wrapper">
 						<span class="progress-label">45% Complete</span>
-						<div class="progress-bar">
-							<div class="progress" style="width:45%"></div>
-						</div>
+						<div class="progress-bar"><div class="progress" style="width:45%"></div></div>
 					</div>
 				</header>
 
@@ -172,7 +177,41 @@
 		navItems.lessons.addEventListener("click", () => showView("lessons"));
 		navItems.strengths.addEventListener("click", () => showView("strengths"));
 		navItems.practice.addEventListener("click", () => showView("practice"));
-		
+		// --- Exam Countdown ---
+		const examDateInput = document.getElementById("examDate");
+		const daysRemainingEl = document.getElementById("daysRemaining");
+
+		// Load saved date from localStorage
+		const savedDate = localStorage.getItem("examDate");
+		if (savedDate) {
+			examDateInput.value = savedDate;
+			updateCountdown(savedDate);
+		}
+
+		// Update countdown when user selects a new date
+		examDateInput.addEventListener("change", (e) => {
+			const selectedDate = e.target.value;
+			localStorage.setItem("examDate", selectedDate);
+			updateCountdown(selectedDate);
+		});
+
+		function updateCountdown(dateString) {
+			const today = new Date();
+			const examDate = new Date(dateString);
+			const diffTime = examDate - today;
+			const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+			if (isNaN(diffDays)) {
+				daysRemainingEl.textContent = "No date set";
+			} else if (diffDays < 0) {
+				daysRemainingEl.textContent = "Exam date has passed!";
+			} else if (diffDays === 0) {
+				daysRemainingEl.textContent = "Exam day is today!";
+			} else {
+				daysRemainingEl.textContent = `${diffDays} day${diffDays !== 1 ? "s" : ""} until exam`;
+			}
+		}
+
 		// Initialize icons after everything renders
 		lucide.createIcons();
 	</script>
