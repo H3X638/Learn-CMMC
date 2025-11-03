@@ -1027,7 +1027,7 @@ body.loaded {
 .topic-item .topic-icon {
 	width: 48px;
 	height: 48px;
-	background: linear-gradient(135deg, var(--accent), #27ae60);
+	background: linear-gradient(135deg, #0c2d48, #2cb1bc);
 	border-radius: 10px;
 	display: flex;
 	align-items: center;
@@ -1241,7 +1241,7 @@ body.loaded {
 }
 
 .topic-nav-item:hover {
-	background: rgba(44, 177, 188, 0.05);
+	background: linear-gradient(135deg, #2cb1bc, #0c2d48);
 	border-color: var(--accent);
 }
 
@@ -1256,7 +1256,7 @@ body.loaded {
 	justify-content: center;
 	width: 36px;
 	height: 36px;
-	background: var(--accent);
+	background: linear-gradient(135deg, #0c2d48, #2cb1bc);
 	color: white;
 	border-radius: 8px;
 	font-weight: 700;
@@ -1265,7 +1265,7 @@ body.loaded {
 }
 
 .topic-nav-item.active .topic-number {
-	background: linear-gradient(135deg, var(--accent), #27ae60);
+	background: linear-gradient(135deg, #2cb1bc, #0c2d48);
 }
 
 .topic-name {
@@ -1432,39 +1432,6 @@ body.loaded {
 		margin-bottom: 0;
 	}
 }
-
-/* === Lesson & Sidebar Icon Color Updates (Blue/White Theme) === */
-
-/* Lesson accordion topic icons (dashboard view) */
-.topic-item .topic-icon {
-	background: linear-gradient(135deg, #1a4d7a, #2cb1bc); /* dark-to-light blue */
-	color: #ffffff;
-}
-
-/* Icon SVG color */
-.topic-item .topic-icon svg {
-	stroke: #ffffff;
-}
-
-/* Hover effect */
-.topic-item:hover .topic-icon {
-	background: linear-gradient(135deg, #163d63, #2396a5);
-}
-
-/* Floating right sidebar icons (next/back buttons, etc.) */
-.topic-sidebar svg,
-.topic-nav-header svg {
-	stroke: #1a4d7a; /* matches your --primary */
-}
-
-/* Hover state for navigation icons */
-.topic-sidebar a:hover svg,
-.topic-nav-header a:hover svg {
-	stroke: #2cb1bc; /* matches your --accent */
-	transition: stroke 0.2s ease;
-}
-
-
 
 @media (max-width: 768px) {
 	.topic-content-layout {
