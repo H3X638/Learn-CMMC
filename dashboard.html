@@ -158,6 +158,13 @@
 			if (user) console.log("User:", user.email);
 		});
 
+		// Lesson 1 topics definition
+		const lesson1Topics = [
+			{ id: 'A', title: 'CMMC Foundations', points: 10, duration: '15-30 Minutes' },
+			{ id: 'B', title: 'DFARS, FAR, and NIST SP 800-171', points: 15, duration: '15-30 Minutes' },
+			{ id: 'C', title: 'CMMC Roles and Assessment Process', points: 12, duration: '15-30 Minutes' }
+		];
+
 		// --- Render Collapsible Lessons ---
 		const accordionContainer = document.getElementById('lessonsAccordion');
 		
@@ -165,6 +172,15 @@
 			lessons.forEach((lesson, index) => {
 				const lessonItem = document.createElement('div');
 				lessonItem.classList.add('lesson-accordion-item');
+				
+				// Get topics for this lesson
+				const topics = lesson.id === 1 ? lesson1Topics : [
+					{ id: 'A', title: `${lesson.title} - Part A`, points: 10, duration: '15-30 Minutes' },
+					{ id: 'B', title: `${lesson.title} - Part B`, points: 12, duration: '15-30 Minutes' }
+				];
+				
+				// Calculate total points
+				const totalPoints = topics.reduce((sum, topic) => sum + topic.points, 0);
 				
 				// Create lesson header
 				const lessonHeader = document.createElement('div');
@@ -179,7 +195,7 @@
 						</svg>
 						<div class="lesson-info">
 							<h3>Lesson ${lesson.id}: ${lesson.title}</h3>
-							<p class="lesson-stats">${lesson.topics?.length || 3} Tasks | ${lesson.points || 37} Knowledge Points</p>
+							<p class="lesson-stats">${topics.length} Tasks | ${totalPoints} Knowledge Points</p>
 						</div>
 					</div>
 					<svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -190,13 +206,6 @@
 				// Create lesson content (topics)
 				const lessonContent = document.createElement('div');
 				lessonContent.classList.add('lesson-accordion-content');
-				
-				// Generate topics (placeholder for now)
-				const topics = lesson.topics || [
-					{ id: 'A', title: `${lesson.title} - Part A`, points: 10, duration: '15-30 Minutes' },
-					{ id: 'B', title: `${lesson.title} - Part B`, points: 12, duration: '15-30 Minutes' },
-					{ id: 'C', title: `${lesson.title} - Part C`, points: 15, duration: '15-30 Minutes' }
-				];
 				
 				topics.forEach(topic => {
 					const topicItem = document.createElement('div');
@@ -240,10 +249,7 @@
 				lessonItem.appendChild(lessonContent);
 				accordionContainer.appendChild(lessonItem);
 				
-				// Open first lesson by default
-				if (index === 0) {
-					lessonItem.classList.add('open');
-				}
+				// DON'T auto-open first lesson
 			});
 		} else {
 			accordionContainer.innerHTML = "<p>No lessons found. Check your lessons.js file.</p>";
