@@ -1433,24 +1433,37 @@ body.loaded {
 	}
 }
 
-/* === Lesson Dropdown & Floating Sidebar Icon Color === */
+/* === Lesson & Sidebar Icon Color Updates (Blue/White Theme) === */
 
-/* Lesson accordion topic icons (Dashboard) */
+/* Lesson accordion topic icons (dashboard view) */
+.topic-item .topic-icon {
+	background: linear-gradient(135deg, #1a4d7a, #2cb1bc); /* dark-to-light blue */
+	color: #ffffff;
+}
+
+/* Icon SVG color */
 .topic-item .topic-icon svg {
-	stroke: #bfa14a; /* soft gold */
+	stroke: #ffffff;
 }
 
-/* Floating right sidebar icons (Next/Back arrows, etc.) */
-.topic-sidebar svg {
-	stroke: #bfa14a; /* same gold for visual consistency */
+/* Hover effect */
+.topic-item:hover .topic-icon {
+	background: linear-gradient(135deg, #163d63, #2396a5);
 }
 
-/* Optional: hover brightness for better feedback */
-.topic-item:hover .topic-icon svg,
-.topic-sidebar a:hover svg {
-	stroke: #d4b760; /* lighter gold on hover */
+/* Floating right sidebar icons (next/back buttons, etc.) */
+.topic-sidebar svg,
+.topic-nav-header svg {
+	stroke: #1a4d7a; /* matches your --primary */
+}
+
+/* Hover state for navigation icons */
+.topic-sidebar a:hover svg,
+.topic-nav-header a:hover svg {
+	stroke: #2cb1bc; /* matches your --accent */
 	transition: stroke 0.2s ease;
 }
+
 
 
 @media (max-width: 768px) {
