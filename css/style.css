@@ -1200,6 +1200,7 @@ body.loaded {
 	border-bottom: 2px solid var(--border);
 }
 
+/* Lesson title */
 .topic-nav-header h3 {
 	font-size: 1.1rem;
 	color: var(--primary);
@@ -1207,19 +1208,26 @@ body.loaded {
 	font-family: "Poppins", sans-serif;
 }
 
-.back-to-lesson {
+/* Next button link */
+.next-Lesson {
 	display: inline-flex;
 	align-items: center;
-	gap: 0.35rem;
+	gap: 0.4rem;
+	font-weight: 600;
+	font-size: 0.9rem;
 	color: var(--accent);
 	text-decoration: none;
-	font-size: 0.9rem;
-	font-weight: 600;
-	transition: color 0.2s ease;
+	transition: all 0.25s ease;
 }
 
-.back-to-lesson:hover {
-	color: var(--primary);
+.next-Lesson svg {
+	stroke: var(--accent);
+	transition: transform 0.2s ease, stroke 0.2s ease;
+}
+
+/* Hover effect similar to dashboard links (subtle color shift) */
+.next-Lesson:hover {
+	color: #2499a6;
 }
 
 .topic-nav-list {
@@ -1391,22 +1399,27 @@ body.loaded {
 }
 
 .next-topic-btn {
-  width: 100%;
-  padding: 0.875rem;
-  background: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.875rem;
+	background: var(--accent);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-weight: 600;
+	font-size: 0.95rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	margin-top: 0.75rem;
 }
 
 .next-topic-btn:hover {
-  background: #2499a6;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(44, 177, 188, 0.3);
+	background: #2499a6;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(44, 177, 188, 0.3);
 }
 
 
