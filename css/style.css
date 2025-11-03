@@ -1241,7 +1241,7 @@ body.loaded {
 }
 
 .topic-nav-item:hover {
-	background: linear-gradient(135deg, #2cb1bc, #0c2d48);
+	background: rgba(44, 177, 188, 0.05);
 	border-color: var(--accent);
 }
 
