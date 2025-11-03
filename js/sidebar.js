@@ -20,14 +20,6 @@ function initializeSidebar() {
 	document.body.classList.add('loaded');
 }
 
-import { lessons } from "./lessons.js";
-
-document.addEventListener("DOMContentLoaded", () => {
-	initializeSidebar();
-	populateLessonsInSidebar();
-});
-
-
 // Highlight the current page in sidebar
 function setActivePage() {
 	const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
