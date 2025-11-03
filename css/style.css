@@ -1027,7 +1027,7 @@ body.loaded {
 .topic-item .topic-icon {
 	width: 48px;
 	height: 48px;
-	background: linear-gradient(135deg, #0c2d48, #2cb1bc);
+	background: linear-gradient(145deg, #0e3554 0%, #1e6781 50%, #2cb1bc 100%);
 	border-radius: 10px;
 	display: flex;
 	align-items: center;
@@ -1265,7 +1265,7 @@ body.loaded {
 }
 
 .topic-nav-item.active .topic-number {
-	background: linear-gradient(135deg, #2cb1bc, #0c2d48);
+	background: linear-gradient(145deg, #0e3554 0%, #1e6781 50%, #2cb1bc 100%);
 }
 
 .topic-name {
