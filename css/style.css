@@ -1433,6 +1433,26 @@ body.loaded {
 	}
 }
 
+/* === Lesson Dropdown & Floating Sidebar Icon Color === */
+
+/* Lesson accordion topic icons (Dashboard) */
+.topic-item .topic-icon svg {
+	stroke: #bfa14a; /* soft gold */
+}
+
+/* Floating right sidebar icons (Next/Back arrows, etc.) */
+.topic-sidebar svg {
+	stroke: #bfa14a; /* same gold for visual consistency */
+}
+
+/* Optional: hover brightness for better feedback */
+.topic-item:hover .topic-icon svg,
+.topic-sidebar a:hover svg {
+	stroke: #d4b760; /* lighter gold on hover */
+	transition: stroke 0.2s ease;
+}
+
+
 @media (max-width: 768px) {
 	.topic-content-layout {
 		gap: 1.5rem;
